@@ -50,7 +50,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
 ## Schedule
 
-<table style="width:80%>
+<table>
 
   <tr>
     <th>Week   </th>
