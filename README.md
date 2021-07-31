@@ -28,7 +28,7 @@
       <li> final writeup (30%) </li>
     </ul>
   </ul>
-  Grades will be based on a combination of self-evaluation and my own assesment (more in this in class). 
+  Grades will be based on a combination of self-evaluation and my own assesment (more on this in class). 
 
 
 
