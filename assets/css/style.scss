@@ -2,3 +2,15 @@
 ---
 
 @import "{{ site.theme }}";
+
+* {
+  background-color:rgb(230, 230, 209);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-family:Courier New;
+
+}
