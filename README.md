@@ -7,11 +7,11 @@
  
  **Meeting time**: TBD
  
- **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and experience programming. 
+ **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and are comfortable coding. 
 
  **Course objectives**: You will learn how to implement, fit and interpret linear regression models. Such models form the basis of almost all widely used data analysis techniques, including machine learning algorithms. This a very applied course, and we won't spend much time deriving equations or proving theorems about various inference techniques. Instead, we will learn by playing around with real and simulated data. We will challange the underlying assumptions of a method and see when things "break". My goal is to help you develop an intuition about statistical inference, which can be generalized to real world settings where theorems and analytical formulas fail.
  
- **Coding**: All coding for the course will be done in Python. Some advantages of python (over R) are that: (1) We can *easily* run everything directly in colab, so there is no need to download anything on your machine. (2) To my knowledge Python is more widely used in data science and machine learning, both in academia and in industry. (3) While some very basic things are more difficult to implement, I think you'll find it's easier to generalize to more advanced methods. (4) I think R sucks and is a terrible programming language. (5) I know python and I've basically never coded in R.
+ **Coding**: All coding for the course will be done in Python. Some advantages of python (over R) are that: (1) We can *easily* run everything directly in colab, so there is no need to download anything on your machine. (2) To my knowledge Python is more widely used in data science and machine learning, both in academia and in industry. (3) While some very basic things are more difficult to implement, I think you'll find it's easier to generalize to more advanced methods. (4) I know python and I've basically never coded in R.
 
 
 ## Course policies
@@ -88,14 +88,14 @@ You do not need to be an expert in any of these packages and I will provide you 
 
 <tr>
   <td>10/18</td>
-  <td>Transformations </td>
-  <td><a href = ""> transformations </a></td>
+  <td>Transformations, Logistic regression </td>
+  <td><a href = ""> transformations </a> <a href = ""> logistic regression </a></td>
 </tr>
 
 <tr>
   <td>10/25</td>
-  <td>Logistic regression and GLM</td>
-  <td><a href = ""> logistic regression </a></td>
+  <td>GLM</td>
+  <td><a href = ""> GLM </a></td>
 </tr>
 
 <tr>
@@ -106,7 +106,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
 <tr>
   <td>11/08</td>
-  <td>Selected topics</td>
+  <td>Hierarchical linear models, Selected topics</td>
   <td><a href = ""> TBD </a></td>
 </tr>
 
