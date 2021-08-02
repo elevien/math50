@@ -3,7 +3,7 @@
 ## About the course
 
 
- **Instructor**: <a href = "www.github.io/elevien"> Ethan Levien</a>. I'm an assistent professor in the Mathematics department here at Dartmouth. My background is in stochastic processes and mathematical modeling. I'm especially interested in applications to single-cell physiology, population dynamics and evolution. 
+ **Instructor**: <a href = "https://elevien.github.io/"> Ethan Levien</a>. I'm an assistent professor in the Mathematics department here at Dartmouth. My background is in stochastic processes and mathematical modeling. I'm especially interested in applications to single-cell physiology, population dynamics and evolution. 
  
  **Meeting time**: TBD
  
