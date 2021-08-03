@@ -1,4 +1,4 @@
-# Math 50 (Linear Models)
+<!-- # Math 50 (Linear Models) -->
 
 ## About the course
 
