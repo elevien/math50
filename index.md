@@ -1,7 +1,7 @@
 ---
 home: yes
 layout: default
-logo: pic.png
+logo: logo.png
 
 ---
 
