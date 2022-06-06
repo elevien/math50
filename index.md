@@ -1,39 +1,39 @@
 ---
 home: yes
 layout: default
-logo: logo.png
+logo: logo.svg
 
 ---
 
 ## About the course
 
 
- **Instructor**: <a href = "https://elevien.github.io/"> Ethan Levien</a>. I'm an assistent professor in the Mathematics department here at Dartmouth. My background is in stochastic processes and mathematical modeling. I'm especially interested in applications to single-cell physiology, population dynamics and evolution. 
- 
- **Meeting time**: TBD
- 
- **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and are comfortable coding. 
+ **Instructor**: <a href = "https://elevien.github.io/"> Ethan Levien</a>.
 
- **Course objectives**: You will learn how to implement, fit and interpret linear regression models. Such models form the basis of almost all widely used data analysis techniques, including machine learning algorithms. This a very applied course, and we won't spend much time deriving equations or proving theorems about various inference techniques. Instead, we will learn by playing around with real and simulated data. We will challange the underlying assumptions of a method and see when things "break". My goal is to help you develop an intuition about statistical inference, which can be generalized to real world settings where theorems and analytical formulas fail.
- 
- **Coding**: All coding for the course will be done in Python. Some advantages of python (over R) are that: (1) We can *easily* run everything directly in colab, so there is no need to download anything on your machine. (2) To my knowledge Python is more widely used in data science and machine learning, both in academia and in industry. (3) While some very basic things are more difficult to implement, I think you'll find it's easier to generalize to more advanced methods. (4) I know python and I've basically never coded in R.
+ **Meeting time**: TBD
+
+ **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and are comfortable coding.
+
+ **Course objectives**: You will learn how to build, fit and make predictions with regression models. Such models form the basis of many widely used data analysis techniques, including most machine learning algorithms. This is an applied course, and we won't spend much time deriving equations or proving theorems. Instead, we will learn by playing around with real and simulated data. We will challenge the underlying assumptions of a method and see when things "break". The goal is to help you develop an intuition about statistical inference, which can be generalized to real world settings where theorems and analytical formulas are not applicable.
+
+ **Coding**: All coding for the course will be done in Python. Some advantages of python (over R) are that: (1) We can *easily* run everything directly in the browser using google <a href ="colab.research.google.com"> colab notebooks</a>, so there is no need to download anything on your machine. (2) Python is widely used in data science and machine learning, both in academia and in industry. (3) While some very basic things are more difficult to implement, I think you'll find it's easier to generalize to more advanced methods. (4) I know python and I've basically never coded in R.
 
 
 ## Course policies
 
-**Attendence**: The course meets twice a week and attendence is mandatory. I plan to devote a signficant amount of class time to open-ended discussions and group work, so their really isn't any point in taking the course if you don't plan to consistently attend lectures.
+**Attendence**: The course meets twice a week and attendance is mandatory.
 
 **Grading**:
- Your grade will be based on the following assigments:
+ Your grade will be based on the following assignments:
   <ul>
     <li> python notebooks (50%) - see links in schedule  </li>
- <li> project (50%)  - see <a href = "project" > project guidelines</a>  </li>
+ <li> project (50%)  - see <a href = "./project.html" > project guidelines</a>  </li>
      <ul>
       <li> project proposal (20%) </li>
       <li> final writeup (30%) </li>
     </ul>
   </ul>
-  Grades will be based on a combination of self-evaluation and my own assesment (more on this in class). 
+  Grades will be based on a combination of self-evaluation and my own assessment (more on this in class).
 
 
 
@@ -41,15 +41,18 @@ logo: logo.png
 
 ## Resources
 
-**Textbooks**: <a href ="https://avehtari.github.io/ROS-Examples/"> Regression and other stories </a>. Copies are on reserve at the Library and in the math department. I've found that this is one of the best texts on applied regression at this level, but unforunately they do everything in R. I enourage you to skim over the bits with code and think about how you might accomplish the same task in python. 
+**Textbooks**: The course will be self-contained in the python notebooks and class notes. However, I will occasionally reference the following textbooks for additional readings (note that the first two texts use R rather than python, so the coding components can be skipped):
+*  <a href ="https://avehtari.github.io/ROS-Examples/"> Regression and other stories</a>. The course is very roughly based on this text, which provides a non-technical introduction to regression analysis with many worked examples.
+* <a href ="https://www.eugened.org/"> Advanced Statistics with Applications in R</a>. A more technical introduction to applied regression. I will refer to this text for some of the proofs and derivations which are beyond the scope of this course.
+* <a hred = "https://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/#contents"> Probabilistic Programming and Bayesian Methods for Hackers </a> I will reference this text when we cover probabilistic programming in pymc3. The pymc3 documentation itself is a bit dense.
 
-**Software**: All coding will be done using python in <a href ="colab.research.google.com"> colab notebooks</a>.  Within python there are a number of packges we will use throughout the course, including:
- * <a href ="https://numpy.org/"> numpy </a> for working with arrays, linear algebra and generating random numbers. 
+**Software**: All coding will be done using python in <a href ="colab.research.google.com"> colab notebooks</a>.  Within python there are a number of packages we will use throughout the course, including:
+ * <a href ="https://numpy.org/"> numpy </a> for working with arrays, linear algebra and generating random numbers.
  * <a href ="https://pandas.pydata.org/"> pandas </a> for working with tabular data sets
  * <a href ="https://www.statsmodels.org/stable/index.html"> statsmodels </a> for classical statistics
  * <a href ="https://docs.pymc.io/"> pymc3 </a> for Bayesian statistics
- 
-You do not need to be an expert in any of these packages and I will provide you with skeleton code for most tasks. That said, I expect you to have some basic proficiency debugging, which will occasionally involve referencing the documentation for these packages. 
+
+You do not need to be an expert in any of these packages and I will provide you with skeleton code for most tasks. That said, I expect you to have some basic proficiency debugging, which will occasionally involve referencing the documentation for these packages.
 
 
 
@@ -60,59 +63,154 @@ You do not need to be an expert in any of these packages and I will provide you 
   <tr>
     <th>Week   </th>
     <th>Topics</th>
-    <th>Notebook</th>
+    <th>Assignments</th>
   </tr>
 
- 
+
+
   <tr>
-      <td>09/13</td>
-      <td>introduction python, linear regression with a single predictor</td>
-      <td> <a href = "https://colab.research.google.com/drive/1yPxFVsCmu-KhGC8TFUa3q8JdtTZYnay0"> getting started with python </a> (not graded), <a href = "https://colab.research.google.com/drive/1rG-iJ-IBUWti5CuKuVzjkYAsLjeHhydz?usp=sharing">hello linear regression </a></td>
+      <td VALIGN=TOP>1</td>
+
+      <td>
+      <ul>
+      <li> Course policies </li>
+      <li> Introduction python (during xhours)</li>
+      <li> Probability and random variables, CLT </li>
+      <li> Using simulation to explore probability models </li>
+      </ul>
+      </td>
+
+      <td VALIGN=TOP>
+      <ul>
+      <li> <a href = ""> getting started with python </a> (not graded) </li>
+      <li> <a href = ""> Notebook 1 </a> </li>
+      </ul>
+      </td>
   </tr>
+
+  <tr>
+    <td VALIGN=TOP>2</td>
+    <td>
+    <ul>
+    <li> Background on statistical modeling and inference</li>
+    <li> Hypothesis testing</li>
+    <li> Linear regression with a single predictor</li>
+     </ul>
+    </td>
+
+    <td VALIGN=TOP>
+    <ul>
+    <li> <a href = ""> Notebook 2 </a>  </li>
+    </ul>
+    </td>
+  </tr>
+
+
 
  <tr>
-      <td>09/20</td>
-      <td>Intro to Bayes, Bayesian linear regression </td>
-      <td><a href = "https://colab.research.google.com/drive/1rG-iJ-IBUWti5CuKuVzjkYAsLjeHhydz?usp=sharing">hello bayes </a></td>
+      <td VALIGN=TOP>3</td>
+      <td>
+      <ul>
+      <li> Introduction to Bayesian statistics</li>
+      <li> Probabilistic computation in python with pymc3 </li>
+      <li> Bayesian inference for some probability distributions </li>
+      <li> Where do priors come from?</li>
+       </ul></td>
+
+       <td VALIGN=TOP>
+       <ul>
+       <li> <a href = ""> Notebook 3 </a>  </li>
+       </ul>
+       </td>
   </tr>
 
+
+  <tr>
+    <td VALIGN=TOP>4</td>
+    <td>
+    <ul>
+    <li> Bayesian inference for regression models with a single predictor  </li>
+    <li> Relationship between Bayesian linear regression and least squares </li>
+    <li> p-values revisted </li></ul>
+    </td>
+    <td VALIGN=TOP>
+    <ul>
+  <li> <a href = ""> Notebook 4 </a>  </li>
+    </ul>
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td VALIGN=TOP>5</td>
+    <td>
+    <ul>
+    <li> Regression with multiple predictors </li>
+    <li> Interpreting regression coefficients </li>
+    <li> Working with categorical data  </li>
+    <li> Analysis of variance </li>
+     </ul>
+    </td>
+
+    <td VALIGN=TOP>
+    <ul>
+      <li>  Project proposal due </li>
+    </ul>
+    </td>
+  </tr>
+
+
 <tr>
-  <td>10/04</td>
-  <td>Regression with multiple predictors, regression modeling assumptions </td>
-  <td><a href = "https://colab.research.google.com/drive/1rG-iJ-IBUWti5CuKuVzjkYAsLjeHhydz?usp=sharing">hello bayes </a>
-   <a href = ""> modeling assumptions </a>
+  <td VALIGN=TOP>6</td>
+
+  <td><ul>
+  <li> Deep dive into regression modeling assumptions  </li>
+  <li> What happens when regression modeling assumptions fail?   </li>
+  <li> Model diagnostics and model selection </li>
+  </ul>
+  </td>
+
+  <td VALIGN=TOP>
+  <ul>
+  <li> <a href = ""> Notebook 5 </a>  </li>
+  </ul>
   </td>
 </tr>
 
 <tr>
-  <td>10/11</td>
-  <td>Diagnostics for regression models, robust regression</td>
-  <td><a href = ""> diagnostics </a></td>
-</tr>
+  <td VALIGN=TOP>7</td>
 
+  <td><ul>
+  <li> Performing regression on transformed variables </li>
+  <li> Model building strategies </li>
+  <li> Overfitting </li>
+  <li> Experimental design </li>
+  </ul></td>
 
-<tr>
-  <td>10/18</td>
-  <td>Transformations, Logistic regression </td>
-  <td><a href = ""> transformations </a> <a href = ""> logistic regression </a></td>
-</tr>
+  <td VALIGN=TOP>
+  <ul>
+  <li> <a href = ""> Notebook 6 </a>  </li>
+  </ul>
+  </td>
 
-<tr>
-  <td>10/25</td>
-  <td>GLM</td>
-  <td><a href = ""> GLM </a></td>
-</tr>
-
-<tr>
-  <td>11/01</td>
-  <td>Experimental design</td>
-  <td><a href = ""> design </a></td>
 </tr>
 
 <tr>
-  <td>11/08</td>
-  <td>Hierarchical linear models, Selected topics</td>
-  <td><a href = ""> TBD </a></td>
+  <td VALIGN=TOP>8</td>
+
+  <td><ul>
+  <li> Logistic regression </li>
+  <li> Causal inference  </li>
+  <li> </li>
+  </ul></td>
+
+  <td VALIGN=TOP>
+  <ul>
+  <li> <a href = ""> Notebook 7 </a>  </li>
+  <li> Final project report (due during finals week) </li>
+  </ul>
+  </td>
 </tr>
 
 
