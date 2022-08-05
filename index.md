@@ -43,7 +43,7 @@ logo: logo.svg
 
 **Textbooks**: The course will be self-contained in the python notebooks and class notes. However, I will occasionally reference the following textbooks for additional readings (note that the first two texts use R rather than python, so the coding components can be skipped):
 *  <a href ="https://avehtari.github.io/ROS-Examples/"> Regression and other stories</a>. The course is very roughly based on this text, which provides a non-technical introduction to regression analysis with many worked examples.
-* <a href ="https://www.eugened.org/"> Advanced Statistics with Applications in R</a>. A more technical introduction to applied regression. I will refer to this text for some of the proofs and derivations which are beyond the scope of this course.
+* <a href ="https://www.eugened.org/"> Advanced Statistics with Applications in R</a>. A more technical introduction to applied regression. I will refer to this text for some of the proofs and derivations.
 * <a hred = "https://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/#contents"> Probabilistic Programming and Bayesian Methods for Hackers </a> I will reference this text when we cover probabilistic programming in pymc3. The pymc3 documentation itself is a bit dense.
 
 **Software**: All coding will be done using python in <a href ="colab.research.google.com"> colab notebooks</a>.  Within python there are a number of packages we will use throughout the course, including:

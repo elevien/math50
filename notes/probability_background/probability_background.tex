@@ -1,0 +1,122 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[legalpaper,margin=1.in]{geometry}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{comp_exercise}{Computational Exercise}
+\newtheorem{question}{Question}
+
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bC}{{\boldsymbol C}}
+\newcommand{\ba}{{\boldsymbol a}}
+\newcommand{\bb}{{\boldsymbol b}}
+\newcommand{\bs}{{\boldsymbol s}}
+\newcommand{\bff}{{\boldsymbol f}}
+\newcommand{\br}{{\boldsymbol r}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bc}{{\boldsymbol c}}
+\newcommand{\be}{{\boldsymbol e}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\brho}{{\boldsymbol \rho}}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\ints}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+
+\title{Probability concepts}
+\author{Ethan Levien}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\section{Statistical models and and random variables}
+I key concept in the course is that of a {\bf model}. Before doing any mathematics, let's reflect on the notion of a model in the abstract. 
+
+\begin{exercise}
+Reflect on the different meanings of the word model. What do fashion models, architectural models, mathematical models and other sorts of models have in common?  What are some of the reasons we utilize ``models" of things? 
+\end{exercise}
+
+Broadly speaking, models are ways of simplifying aspects of the world in order to draw conclusions. We we might be familiar with the idea of a mathematical model, perhaps from physics, as a mathematical description of the relationship between variables. For example, in Newton's law we relate force to mass and acceleration. This is useful, because if you observe a particle we can measure its mass and acceleration (e.g. a distant star), we can perhaps say something about the force being exerted on it. Newton's laws are what we might call \emph{fundamental}, in the sense that they hold true all throughout nature and other theories are built upon them. In statistics, we rarely have something like Newton's laws. In economics for example, models are built in numerous assumptions about the human nature and often fail. Such models can still be quite useful provided we have a firm understanding of their range of applicability and they can at least make some predictions (this is never true in economics). 
+
+
+A {\bf Statistical model} is simply a model in which at least some of the variables are {\bf random variables}. To my knowledge, the term {\bf probabilistic model} is sometimes used to mean the same thing as a statistical model.  Returning to Newton's example, we could imagine the force exerted on a particle is random (as is the case for molecules inside cells), and then (assuming the mass is fixed) the acceleration would also be random. Now imagine an example of more relevance to this course: Consider the variable $Y$ representing whether a randomly selected student from Dartmouth identifies as a republican or not. $Y$ is a random variable because we cannot predict it until we ask a student. 
+
+\begin{exercise}
+What are some variables in nature where it makes sense to use non-statistical, or {\bf deterministic} models, and some where it makes more sense to use statistical models? 
+\end{exercise}
+
+We can define a random variable more general as a variable we can not predict exactly prior to an observation of the variable, no matter how much information we have (e.g. the roll of a dice).  When we observe a random variable, it will take on a value from a set of possible outcomes ($1,2,\dots,6$ for the dice). We can describe a characterize a random variable using  a {\bf probability distribution}, which maps a set of possible outcomes to to real numbers between 0 and 1. Usually the outcomes are numbers, even if we use a number to represent a non-numerical quantity (e.g. whether someone is a smoker).  In statistics, we often refer to observations of random variables as {\bf samples}.  Often when we generate samples using a computer we call them {\bf simulations}. 
+
+
+ Let consider a concrete example: A random variable $X$ taking on the possible outcomes in $\{0,1\}$ is said to be a Bernoulli random variable. In this case we can write the probability distribution as 
+\begin{equation}
+P(X) = \left\{ \begin{array}{cc}
+q & X=0\\
+1-q & X=1
+\end{array}
+ \right.
+\end{equation}
+Returning to the example of the Dartmouth Survay: Well, it has to be a Bernoulli distribution, since there are only two outcomes. In order to say that we are modeling $Y$ with a Bernoulli distribution symbolically, we write 
+\begin{equation}
+Y \sim {\rm Bernoulli}(q).
+\end{equation}
+We might also say, $Y$ \emph{follows} as Bernoulli distribution.
+More generally, we say that a variable in a model follows a given distribution by writing 
+\begin{equation}
+{\rm Variable} \sim {\rm Distribution}. 
+\end{equation}
+  Turning back to the model, we notice there is a missing piece: the value of $q$. Without this, we can't make any predictions at all. The process is determining $q$ based on data (e.g. a survey of Dartmouth students or conversations we have had) is known as {\bf statistical inference}. 
+
+\begin{exercise}
+Often, we run many simulations of a model in order to say something about the distribution without performing any analytical calculations. We call these {\bf Monte Carlo} simulations. Use Monte Carlo simulations to find the average time it takes to get a $1$. 
+\end{exercise}
+
+There are ways in which we summarize attributes of random variables. The most common is the mean. If we have many samples $Y_1,Y_2,\dots,Y_n$ of a random variable (e.g. answers to a survey question), we can write 
+\begin{equation}
+\bar{y} = \frac{1}{n}\sum_{i}y_i
+\end{equation}
+This will converge to the average value of $\bar{y}$. 
+
+
+
+
+\section{More distributions}
+\subsection{Binomial: Distribution}
+
+A situation that often arrises is that we take many, say $n$, independent samples from a Bernoulli distribution. Now let $k$ be the number of $1$s. Then $k$ follows {\bf binomial distribution}. 
+
+\subsection{Normal distribution and the central limit theorem}
+
+In the previous example, we say that if we take the average of many Bernoulli random variables, we get something that looks a lot like a bell curve. It turns out this is true when we add up \emph{any} random variables which are sufficiently independent (we will make this precise soon). Since the ``bell curve" arrises in the limit where we sum or average many random variables, , 
+
+\subsection{Other distributions}
+Read the wikipedia page for the following random variables
+\begin{itemize}
+\item Binomial
+\item Chi-Squared
+\end{itemize}
+
+\subsection{Independence and correlation} [POLISH] We introduce, very briefly, the concepts of independence and conditioning. Given two random variables, $X$ and $Y$, to condition $Y$ on $X$ (denoted $Y|X$) means we are looking at $Y$ for a fixed value of $X$. 
+Two random variables are independent if conditioning does not change their probability distribution. 
+
+
+\end{document}

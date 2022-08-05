@@ -1,0 +1,108 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[legalpaper,margin=1.in]{geometry}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{question}{Question}
+
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bC}{{\boldsymbol C}}
+\newcommand{\ba}{{\boldsymbol a}}
+\newcommand{\bb}{{\boldsymbol b}}
+\newcommand{\bs}{{\boldsymbol s}}
+\newcommand{\bff}{{\boldsymbol f}}
+\newcommand{\br}{{\boldsymbol r}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bc}{{\boldsymbol c}}
+\newcommand{\be}{{\boldsymbol e}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\brho}{{\boldsymbol \rho}}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\ints}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+
+\title{Bayesian thinking}
+\author{Ethan Levien}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\section{Motivation}
+We revisit the basic Linear regression model:
+\begin{equation}
+Y \sim {\rm Normal}(\alpha + \beta x,\sigma).
+\end{equation} 
+Sometimes we know the values of $\alpha$ and $\beta$ before seeing any data, for example, the ideal gas law. In this case, there is no need to carry out statistical inference. In the previous section, we discussed how statistical inference of the parameters $\alpha$, $\beta$ and $\sigma$ works, assuming no knowledge of these parameters. These is an intermediate between these two regimes: We might have a rough idea of what the parameters are from physical considerations or previous experiments. In this case, it is appropriate to incorporate this knowledge into out statistical inference. This can be done via \emph{priors}. In order to understand priors, let's work with the following exampe. 
+
+\begin{exercise} Consider the election example, suppose we know (e.g. from polling data that). What does this tell use about $\alpha$? 
+\end{exercise}
+
+The important thing to realize is that priors are simply an extension of our statistical model, in these sense that they are variables which we make assumptions about. As such, we can express our model and proceed to make predictions as usual.
+
+\begin{exercise}
+Consider the model 
+\begin{align}
+Y &\sim {\rm Normal}(\alpha + \beta x,0.4)\\
+\alpha &\sim {\rm Normal}(0,2)\\
+\beta &\sim {\rm Normal}(1,2)
+\end{align}
+What is the chance that $Y>0.3$.
+\end{exercise}
+In the above examples, we fixed $\sigma$, but a it is reasonable to place priors on this as well. The question is: How do we do this in a way that ensures $\sigma>0$? 
+
+\begin{exercise} Consider the election example, suppose we know (e.g. from polling data that). What does this tell use about $\alpha$? 
+\end{exercise}
+
+\section{Bayes Theorem}
+How do we incorporate priors into our statistical inference? 
+\begin{equation}
+P(D|\theta)P(\theta) = P(\theta|D)P(D)
+\end{equation}
+Rearraning this yields 
+\begin{equation}\label{eq:bayes}
+P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}
+\end{equation}
+
+\begin{exercise} Can you explain why Bayes theorem holds for both probability distributions and probability densities? 
+\end{exercise}
+The distributions appearing in Equation \eqref{eq:bayes} have the following names and interpretations: 
+\begin{itemize}
+\item $P(\theta|D)$ is the posterior.
+\item $P(D|\theta)$ is the likelihood 
+\item $P(\theta)$
+\item $P(D)$
+\end{itemize}
+Bayes theorem provides us with the mathematical formalism to think about statistical inference probabilistically. In some cases, this mathematics can yield analytical formula for the 
+
+\begin{exercise} 
+\end{exercise}
+
+In general, even for simple models, the posterior is not available to us 
+
+\section{Posterior prediction}
+
+\section{Bayesian $p$-values}
+
+
+
+\end{document}

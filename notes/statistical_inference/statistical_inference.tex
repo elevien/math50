@@ -1,0 +1,84 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[legalpaper,margin=1.in]{geometry}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{question}{Question}
+
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bC}{{\boldsymbol C}}
+\newcommand{\ba}{{\boldsymbol a}}
+\newcommand{\bb}{{\boldsymbol b}}
+\newcommand{\bs}{{\boldsymbol s}}
+\newcommand{\bff}{{\boldsymbol f}}
+\newcommand{\br}{{\boldsymbol r}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bc}{{\boldsymbol c}}
+\newcommand{\be}{{\boldsymbol e}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\brho}{{\boldsymbol \rho}}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\ints}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+
+\title{Statistical inference}
+\author{Ethan Levien}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+
+
+\section{Statistical inference for Bernoulli random variables}
+Let's imagine we do in fact conduct a survey of $n = 20$ students and find $k = 3$ students identify as republicans.
+\begin{exercise}
+Based only on this information (and not your previous experience) what is your best guess of $q$?
+\end{exercise}
+Can we make this a little more precise? Recall that if each individual data point$y_i$ has a Bernoulli distribution, then the  a number of people, $k$, who responded saying they are repbulican's follows a Binomial distribution: 
+\begin{equation}
+p(k|q) = \sum { n \choose k} q^{k} (1-q)^{N-k}
+\end{equation}
+This equation tells us how likely it is to observe $k$ yeses among $n$ people surveyed. Then, it seems reasonable that this number should not be very small, since that would mean our survay results are an anomoly. In fact, the larger this number is, the more ``typical" our results are. This provides us with a way to determine $q$: We can take as our estimate $\hat{q}$ the value which makes $p(k|q)$ largest. You can do this using calculate 
+\begin{equation}
+\hat{q} = \frac{k}{n}
+\end{equation}
+This is not the only way to estimate $q$, but it is the most natural and widely used. We call estimatoes like this one, which are obtained by maximizng the probability distribtion evaluated at the data, or {\bf likelihood}, maximum likelhood estimates, or MLEs. They are useful, but as we learn later on, they are not the entire story.
+
+
+A question we often ask about any sort of estimate is: How accurate is this? For example, if we survey $n=10000$ people and fine $5000$ respond YES, our estimate of $\hat{q} = 1/2$ is clearly more reiable than if we had surveyed $n=4$ and received $2$ YES. In classical statistics, we measure accuracy using the standard error, denoted ${\rm se}(\hat{q})$.  Roughly speaking, if we performed many experienbts and measured $\hat{q}$, the measurments will typically differ by ${\rm se}(\hat{q})$. I 
+\begin{equation}
+{\rm se}(\hat{q}) = \sqrt{\frac{\hat{q}(1-\hat{q})}{n}}
+\end{equation}
+
+
+
+
+
+
+
+\section{Statistical inference for Normal random variables}
+Now let's think about statistical inference for a Normal random variable. 
+
+
+
+\end{document}

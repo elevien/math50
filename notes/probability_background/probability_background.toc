@@ -1,0 +1,6 @@
+\contentsline {section}{\tocsection {}{1}{Statistical models and and random variables}}{1}{}%
+\contentsline {section}{\tocsection {}{2}{More distributions}}{2}{}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Binomial: Distribution}}{2}{}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Normal distribution and the central limit theorem}}{2}{}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Other distributions}}{2}{}%
+\contentsline {subsection}{\tocsubsection {}{2.4}{Independence and correlation}}{2}{}%

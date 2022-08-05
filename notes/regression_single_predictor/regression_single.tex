@@ -1,0 +1,143 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[legalpaper,margin=1.in]{geometry}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{question}{Question}
+
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bC}{{\boldsymbol C}}
+\newcommand{\ba}{{\boldsymbol a}}
+\newcommand{\bb}{{\boldsymbol b}}
+\newcommand{\bs}{{\boldsymbol s}}
+\newcommand{\bff}{{\boldsymbol f}}
+\newcommand{\br}{{\boldsymbol r}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bc}{{\boldsymbol c}}
+\newcommand{\be}{{\boldsymbol e}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\brho}{{\boldsymbol \rho}}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\ints}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+
+\title{Linear regression with a single-predictor}
+\author{Ethan Levien}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\section{Linear regression}
+The subject of this course is mostly linear regression models. In the simplest case where we have a single independent variable, $x$, a regression model for the relationship between $Y$ and  $x$ is 
+\begin{equation}
+y \sim {\rm Normal}(\alpha + \beta x,\sigma)
+\end{equation}
+Written another way, our model for $Y$ is 
+\begin{equation}
+y =\alpha + \beta x + \xi,\quad \xi \sim {\rm Normal}(0,\sigma).
+\end{equation}
+We are interested in the associated statistical inference problem, but first, let's assume $a$ and $b$ are known and think about some of the predictions we can make.  
+
+\begin{exercise} Suppose that a regression model for the relationship between time and is 
+\begin{equation}
+y \sim {\rm Normal}(1.4 x+ 5,1.)
+\end{equation}
+What is the chance that the incumbent receives more that $50$\% of the vote if the economic growth was $4$\%?
+\end{exercise}
+
+
+
+\section{Least squares for the regression model}
+Now suppose we have some data $D$ consisting of $x$ and $y$ pairs:
+\begin{equation}
+D = \{(x_1,y_1),\dots,(x_n,y_n)\}
+\end{equation}
+One can show that an of $\beta$ and $\alpha$ is 
+\begin{align}
+\hat{\beta} &= \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{(x_i-\bar{x})^2} \\
+\hat{\alpha} &= \bar{y} - \hat{\beta} \bar{x}
+\end{align}
+where $\bar{x}$ and $\bar{y}$ are the sample means of $x$ and $y$ respectively. 
+
+\begin{exercise} ????
+\end{exercise}
+
+
+We call this least squares estimator because it comes minimizing the squares of the residuals, 
+\begin{equation}
+r_i =\hat{\beta} x_i + \hat{\alpha}- y_i. 
+\end{equation}
+
+By minimizing $r_i$ we ensure that the probability we see the data is as high as possible: 
+\begin{equation}
+p(y|x) = \frac{1}{(2\pi)^{n/2} \sigma^n}e^{-r_i^2/(2\sigma^2)}
+\end{equation}
+
+What about $\hat{\sigma}$? Recall that the estimator of a the standard deviation of a Normal distribution is 
+\begin{equation}\label{eq:normal_std}
+\sqrt{\frac{1}{n-1}}\sum y_i^2
+\end{equation}
+If we want to estimate the standard error, we might expect to replace $y_i$ with $r_i$ (can you see why?); however, this does not account for the fact that we don't know $\hat{\alpha}_i$. This additional degree of freedom causes the Equation \eqref{eq:normal_std} to over estimate the variance. Correcting for this yields  
+\begin{equation}
+\hat{\sigma} = \sqrt{\frac{1}{n-2}}\sum y_i^2
+\end{equation}
+
+You can see the formal derivation of all this in \cite{}. 
+
+
+\begin{exercise}  Are the residuals the same things as $\xi$? 
+\end{exercise}
+
+
+
+\section{Correlation and standardization}
+
+We start with an exercise in rewriting the estimator of $\beta$: 
+Let $\hat{\sigma}_x^2$ and $\hat{\sigma}_y^2$ be the estimators of the variance in $x$ and $y$. The sample correlation of two samples $x$ and $y$ is given by 
+\begin{equation}
+r_{x,y}^2 = \frac{1}{n-2}\sum (x_i - \bar{x})(y_i - \bar{y})
+\end{equation}
+Note that $\hat{\beta} = r_{x,y}/\hat{\sigma}_x^2$. Sometimes it is useful to \emph{standardize} the variables before performing a regression, meaning we transform them into standard Normal random variables. 
+ \begin{exercise}  Show that for a sample of a random variable $x_1,x_2,\dots,x_n$
+ \begin{equation}
+ z_i = \frac{x_i - \bar{x}}{\hat{\sigma}_x^2}
+ \end{equation}
+\end{exercise}
+
+If we perform a regression on the standardized variables, then 
+\begin{equation}
+\hat{\beta} 
+\end{equation}
+
+The quantity $\rho$ is called the \emph{correlation coefficient}. 
+We will take 
+
+\begin{exercise} Is the correlation coefficient symmetric; that is, i
+\end{exercise}
+
+
+\section{$p$-values}
+We've already discussed $p$-values and mentioned some potential reasons to avoid using them. However, they play a central role and statistics and we must therefore understand them in the context of regression. 
+
+
+\end{document}
