@@ -1,41 +1,6 @@
-\documentclass{amsart}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage[legalpaper,margin=1.in]{geometry}
+\input{./../note_style}
 
-
-\newtheorem{thm}{Theorem}
-\newtheorem{exercise}{Exercise}
-\newtheorem{question}{Question}
-
-\newcommand{\mcS}{\mathcal S}
-\newcommand{\mcR}{\mathcal R}
-\newcommand{\mcC}{\mathcal C}
-\newcommand{\bS}{{\boldsymbol S}}
-\newcommand{\bR}{{\boldsymbol R}}
-\newcommand{\bC}{{\boldsymbol C}}
-\newcommand{\ba}{{\boldsymbol a}}
-\newcommand{\bb}{{\boldsymbol b}}
-\newcommand{\bs}{{\boldsymbol s}}
-\newcommand{\bff}{{\boldsymbol f}}
-\newcommand{\br}{{\boldsymbol r}}
-\newcommand{\bx}{{\boldsymbol x}}
-\newcommand{\bt}{{\boldsymbol t}}
-\newcommand{\bv}{{\boldsymbol v}}
-\newcommand{\bu}{{\boldsymbol u}}
-\newcommand{\bw}{{\boldsymbol w}}
-\newcommand{\bc}{{\boldsymbol c}}
-\newcommand{\be}{{\boldsymbol e}}
-\newcommand{\bq}{{\boldsymbol q}}
-\newcommand{\bphi}{{\boldsymbol \phi}}
-\newcommand{\brho}{{\boldsymbol \rho}}
-\newcommand{\btau}{{\boldsymbol \tau}}
-\newcommand{\reals}{\mathbb R}
-\newcommand{\ints}{\mathbb N}
-\newcommand{\E}{\mathbb E}
-\newcommand{\Prob}{\mathbb P}
-
-\title{Linear regression with a single-predictor}
+\title{\Huge \color{C1}  Linear regression with a single-predictor}
 \author{Ethan Levien}
 \date{April 2022}
 
@@ -47,53 +12,80 @@
 
 
 
-\section{Linear regression}
-The subject of this course is mostly linear regression models. In the simplest case where we have a single independent variable, $x$, a regression model for the relationship between $Y$ and  $x$ is 
-\begin{equation}
-y \sim {\rm Normal}(\alpha + \beta x,\sigma)
+
+\section{The linear regression model with one predictor}
+The main subject of this course is linear regression models. In the simplest case where we have a single independent variable, $x$, a regression model for the relationship between $Y$ and  $x$ is 
+\begin{equation}\label{eq:reg}
+y \sim {\rm Normal}(a+ b x,\sigma)
 \end{equation}
-Written another way, our model for $Y$ is 
+The variable $x$ is called the {\bf predictor}.  Written another way, our model for $Y$ is 
 \begin{equation}
-y =\alpha + \beta x + \xi,\quad \xi \sim {\rm Normal}(0,\sigma).
+y =a+ bx + \xi,\quad \xi \sim {\rm Normal}(0,\sigma).
 \end{equation}
+
+
+Importantly, the standard linear regression model is a conditional model, in the sense that is tell us the distribution of our dependent variable, $y$, \emph{conditioned} on $x$. This means that the distribution of $x$ is not part of our model and in order to make predictions, the values of $x$ need to be given to us. In order to emphasize this point, we sometimes write 
+\begin{equation}\label{eq:reg}
+y|x \sim {\rm Normal}(a+ b x,\sigma)
+\end{equation}
+
 We are interested in the associated statistical inference problem, but first, let's assume $a$ and $b$ are known and think about some of the predictions we can make.  
 
-\begin{exercise} Suppose that a regression model for the relationship between time and is 
+\begin{example} Suppose that we model the temperature $y$ in degrees Fahrenheit on a given day as a function of the temperature on a previous day 
 \begin{equation}
-y \sim {\rm Normal}(1.4 x+ 5,1.)
+y \sim {\rm Normal}(0.5x+ 30,3.)
 \end{equation}
-What is the chance that the incumbent receives more that $50$\% of the vote if the economic growth was $4$\%?
+If the temperature was $88$ yesterday, what is the chance it is greater than $88$ tomorrow? Use properties of the Normal distribution and confirm your result with simulations
+\end{example}
+\begin{solution}
+$y$ is Normal with a mean and standard deviation of $70$ and $3$ respectively. From properties of the Normal distribution, the chance that $y>$ is $64$. 
+\begin{Verbatim}
+y = np.random.normal(70,5,1000)
+len(y[y>70])/len(y)
+\end{Verbatim}
+\end{solution}
+
+
+
+\begin{example} Suppose that we model the temperature $y$ in degrees Fahrenheit on a given day as a function of the temperature on a previous day 
+\begin{equation}
+y \sim {\rm Normal}(0.5x+ 30,1.)
+\end{equation}
+If the temperature was $88$ yesterday, what is the chance it is greater than $88$ tomorrow? 
+\end{example}
+
+\begin{exercise} Continuing with the temperature model from the previous question,  
 \end{exercise}
 
 
 
-\section{Least squares for the regression model}
+\url{https://colab.research.google.com/drive/1H24olTdEAPp2xpxhMXhyvFaEzjjaiZnk#scrollTo=HdT4XpUZoVHk&line=1&uniqifier=1}
+
+\section{Inference for linear regression models}
 Now suppose we have some data $D$ consisting of $x$ and $y$ pairs:
 \begin{equation}
 D = \{(x_1,y_1),\dots,(x_n,y_n)\}
 \end{equation}
-One can show that an of $\beta$ and $\alpha$ is 
+
+
+One can show that the MLE estimates of $\beta$ and $\alpha$ are 
 \begin{align}
-\hat{\beta} &= \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{(x_i-\bar{x})^2} \\
-\hat{\alpha} &= \bar{y} - \hat{\beta} \bar{x}
+\hat{b}_{\rm MLE} &= \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i-\bar{x})^2} \\
+\hat{a}_{\rm MLE} &= \bar{y} - \hat{\beta} \bar{x}
 \end{align}
 where $\bar{x}$ and $\bar{y}$ are the sample means of $x$ and $y$ respectively. 
+This approach to estimating the regression slopes is also known as {\bf least squares}, because it minimizes the squared error between the {\bf residuals}
+ \begin{equation}
+r_i =\hat{b} x_i + \hat{a}- y_i. 
+\end{equation}
 
-\begin{exercise} ????
+
+\begin{exercise}  Discuss the relationship between the residuals and the noise term $\xi_i$, the difference between the data and the regression line.   Are they equal? Why or why not? 
 \end{exercise}
 
 
-We call this least squares estimator because it comes minimizing the squares of the residuals, 
-\begin{equation}
-r_i =\hat{\beta} x_i + \hat{\alpha}- y_i. 
-\end{equation}
 
-By minimizing $r_i$ we ensure that the probability we see the data is as high as possible: 
-\begin{equation}
-p(y|x) = \frac{1}{(2\pi)^{n/2} \sigma^n}e^{-r_i^2/(2\sigma^2)}
-\end{equation}
-
-What about $\hat{\sigma}$? Recall that the estimator of a the standard deviation of a Normal distribution is 
+There is another parameter in our model, $\hat{\sigma}$. This also has an MLE.  Recall that the estimator of a the standard deviation of a Normal distribution is 
 \begin{equation}\label{eq:normal_std}
 \sqrt{\frac{1}{n-1}}\sum y_i^2
 \end{equation}
@@ -102,18 +94,59 @@ If we want to estimate the standard error, we might expect to replace $y_i$ with
 \hat{\sigma} = \sqrt{\frac{1}{n-2}}\sum y_i^2
 \end{equation}
 
-You can see the formal derivation of all this in \cite{}. 
+
+\subsection{Linear regression with statsmodels}
+We can perform a linear regression in stats models using the following code
+
+\begin{Verbatim}
+model= sm.OLS(y,X) 
+results = model.fit()
+\end{Verbatim}
+ This first command creates the ``model" object, which is all the information about the data and the statistical model (linear regression). The second commend actually does the computations which give the results.\footnote{The function OLS uses maximum likelihood as described in Chapter 8 of the textbook. This is constrast to the Bayesian methods used in Chapter's 6 and 8. We will learn how to approach this problem from a Bayesian perspective later on, but for now, note that the results are slightly different.}
+ The results variable stores all the information about the fitted model, which we print with 
+ \begin{Verbatim}
+ print(results.summary())
+ \end{Verbatim}
+ 
+ This will output something like 
+ \begin{Verbatim}
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.132
+Model:                            OLS   Adj. R-squared:                  0.123
+Method:                 Least Squares   F-statistic:                     14.86
+Date:                Mon, 13 Sep 2021   Prob (F-statistic):           0.000207
+Time:                        21:28:39   Log-Likelihood:                 89.756
+No. Observations:                 100   AIC:                            -175.5
+Df Residuals:                      98   BIC:                            -170.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          1.9925      0.010    199.914      0.000       1.973       2.012
+x1             0.1712      0.044      3.855      0.000       0.083       0.259
+==============================================================================
+Omnibus:                        2.592   Durbin-Watson:                   1.959
+Prob(Omnibus):                  0.274   Jarque-Bera (JB):                2.382
+Skew:                          -0.040   Prob(JB):                        0.304
+Kurtosis:                       3.752   Cond. No.                         4.46
+==============================================================================
+\end{Verbatim}
 
 
-\begin{exercise}  Are the residuals the same things as $\xi$? 
-\end{exercise}
-
+\begin{example} Generate simulated data from the model
+\begin{equation}
+y \sim {\rm Normal}(4x + 5,5)
+\end{equation} 
+and perform a linear regression on the fitted model. 
+\end{example}
 
 
 \section{Correlation and standardization}
 
 We start with an exercise in rewriting the estimator of $\beta$: 
-Let $\hat{\sigma}_x^2$ and $\hat{\sigma}_y^2$ be the estimators of the variance in $x$ and $y$. The sample correlation of two samples $x$ and $y$ is given by 
+Let $\hat{\sigma}_x^2$ and $\hat{\sigma}_y^2$ be the estimators of the variance in $x$ and $y$. Remember that even though we don't have a model for $x$, we can still compute the standard deviation. The sample correlation of two samples $x$ and $y$ is given by 
 \begin{equation}
 r_{x,y}^2 = \frac{1}{n-2}\sum (x_i - \bar{x})(y_i - \bar{y})
 \end{equation}
@@ -136,8 +169,19 @@ We will take
 \end{exercise}
 
 
-\section{$p$-values}
+\section{Hypothesis testing for regression models}
 We've already discussed $p$-values and mentioned some potential reasons to avoid using them. However, they play a central role and statistics and we must therefore understand them in the context of regression. 
 
+\section{Additional exercises} 
+\begin{exercise} Using the code above, write a function which does the following: First, it generates data from a simulated linear regression with slope a, intercept b, measurment noise sigma and n data points. It then performs a linear regression on the simulated data and outputs the estimated slope, intercept, the $R^2$ value and the $p$-value for the slope.
+You can generate the $x$ values by copying the code at the beginning of this section and changing $n$. 
+\end{exercise}
+
+\begin{exercise} Using your function, make a plot of the p-value vs. n using the values of a, b and sigma from above. Make the same plot with $a = 1.0$, $b = 2$ and $\sigma = 0.1$. Now repeat this but plotting $R^2$ instead of the $p$-values.  Can you explain why the behavoir of these plots makes sense? Hint: It may be helpful to plot the results on a log scale using `ax.semilogy`. 
+\end{exercise}
+
+\begin{exercise}
+Generate data such that performing a linear regression results in a (a) A very small $p$-value and an $R^2$ value close to $1$. (b) A large $p$ value and a very small $R^2$ value. (c) A small $p$-value and a small $R^2$ value. 
+\end{exercise}
 
 \end{document}

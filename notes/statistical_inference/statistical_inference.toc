@@ -1,2 +1,5 @@
-\contentsline {section}{\tocsection {}{1}{Statistical inference for Bernoulli random variables}}{1}{}%
-\contentsline {section}{\tocsection {}{2}{Statistical inference for Normal random variables}}{1}{}%
+\contentsline {section}{\tocsection {}{1}{Statistical inference and maximum likelihood}}{1}{}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{MLE, bias and consistency}}{1}{}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Standard errors}}{2}{}%
+\contentsline {section}{\tocsection {}{2}{Inference for a Normal distribution}}{2}{}%
+\contentsline {section}{\tocsection {}{3}{Hypothesis testing}}{3}{}%
