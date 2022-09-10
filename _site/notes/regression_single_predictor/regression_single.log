@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.29)  9 SEP 2022 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.29)  6 SEP 2022 14:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**statistical_inference.tex
-(./statistical_inference.tex
+**regression_single.tex
+(./regression_single.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (./../note_style.tex
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amscls/amsart.cls
@@ -226,8 +226,8 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count282
 \l__pdf_internal_box=\box54
 )
-No file statistical_inference.aux.
-\openout1 = `statistical_inference.aux'.
+(./regression_single.aux)
+\openout1 = `regression_single.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -244,6 +244,7 @@ LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
+
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -308,37 +309,39 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-No file statistical_inference.toc.
+(./regression_single.toc)
 \tf@toc=\write4
-\openout4 = `statistical_inference.toc'.
+\openout4 = `regression_single.toc'.
 
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 27.
-
-
-LaTeX Warning: Reference `eq:binomial-pdf' on page 1 undefined on input line 32
-.
-
-
-LaTeX Warning: Reference `eq:binomial-pdf' on page 1 undefined on input line 34
-.
 
 
 LaTeX Font Warning: Font shape `T1/qbk/m/sl' in size <10> not available
-(Font)              Font shape `T1/qbk/m/it' tried instead on input line 41.
+(Font)              Font shape `T1/qbk/m/it' tried instead on input line 34.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-6.
+2.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+)
+Overfull \hbox (2.92015pt too wide) in paragraph at lines 62--63
+[]$\T1/cmtt/m/n/10 https : / / colab . research . google . com / drive / 1H24ol
+TdEAPp2xpxhMXhyvFaEzjjaiZnk #
+ []
+
+[1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Reference `eq:normal_std' on page 2 undefined on input line 92.
+
+[2]
+Overfull \hbox (120.73712pt too wide) has occurred while \output is active
+ []\T1/qbk/m/n/20.74 LINEAR REGRESSION WITH A SINGLE-PREDICTOR[] []
+ []
+
 
 Overfull \vbox (6.23798pt too high) has occurred while \output is active []
 
 
-[3] (./statistical_inference.aux)
+[3] (./regression_single.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -347,13 +350,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 5195 strings out of 478268
- 75988 string characters out of 5846347
- 394742 words of memory out of 5000000
- 23181 multiletter control sequences out of 15000+600000
+ 5200 strings out of 478268
+ 76038 string characters out of 5846347
+ 398774 words of memory out of 5000000
+ 23182 multiletter control sequences out of 15000+600000
  503698 words of font info for 59 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 74i,9n,79p,1232b,267s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,10n,79p,559b,300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/loc
 al/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/local/tex
@@ -363,16 +366,14 @@ ve/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
 /2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
 022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
-2/texmf-dist/fonts/type1/public/tex-gyre/qbkb.pfb></usr/local/texlive/2022/texm
-f-dist/fonts/type1/public/tex-gyre/qbkr.pfb></usr/local/texlive/2022/texmf-dist
-/fonts/type1/public/tex-gyre/qbkri.pfb></usr/local/texlive/2022/texmf-dist/font
-s/type1/public/cm-super/sftt1000.pfb>
-Output written on statistical_inference.pdf (3 pages, 196356 bytes).
+texmf-dist/fonts/type1/public/tex-gyre/qbkb.pfb></usr/local/texlive/2022/texmf-
+dist/fonts/type1/public/tex-gyre/qbkr.pfb></usr/local/texlive/2022/texmf-dist/f
+onts/type1/public/tex-gyre/qbkri.pfb></usr/local/texlive/2022/texmf-dist/fonts/
+type1/public/cm-super/sftt1000.pfb>
+Output written on regression_single.pdf (3 pages, 206384 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

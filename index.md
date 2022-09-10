@@ -10,7 +10,8 @@ logo: logo.svg
 
  **Instructor**: <a href = "https://elevien.github.io/"> Ethan Levien</a>.
 
- **Meeting time**: TBD
+**Meeting time**: T/TH @ 10-12:
+**Office Hours**: T @ 1:
 
  **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and are comfortable coding.
 
@@ -26,16 +27,28 @@ logo: logo.svg
 **Grading**:
  Your grade will be based on the following assignments:
   <ul>
-    <li> python notebooks (50%) - see links in schedule  </li>
- <li> project (50%)  - see <a href = "./project.html" > project guidelines</a>  </li>
+    <li> Exercises (60%) - see links in schedule.   </li>
+    <li> Attendence (10%)   </li>
+ <li> Project (30%)  - see <a href = "./project.html" > project guidelines</a>  </li>
      <ul>
-      <li> project proposal (20%) </li>
-      <li> final writeup (30%) </li>
+      <li> project proposal (5%) </li>
+      <li> final writeup (25%) </li>
     </ul>
   </ul>
   Grades will be based on a combination of self-evaluation and my own assessment (more on this in class).
 
 
+**Exercises**:  Your "homework" is to submit solutions to a set of exercises. I say "homework" because I plan to incorperate problem solving sessions into the lectures, giving you more time to discuss problems with myself and your peers.
+You will submit you solutions to gradescope (approximately) every week before I release the solutions. Then, the following week you will self-evaluate (i.e. grade) you solutions and submit the evaluation. You should use the following point scale, which I will elaborate on in class:
+<ul>
+<li> 0 - no work was done, or barely any effort was made. </li>
+<li> 1 - You put down partial work, but didn't put much effort in and didn't reach out if you needed help.   </li>
+<li> 2 - You put in effort, but didn't get the problem exactly correct. You reached out if you needed help, but didn't engage in discussions on slack or in class.      </li>
+<li> 3 - You got the problem correct, or made a very significant effort, including attending office hours and asking questions on slack if needed. </li>
+</ul>
+
+On average, I'll expect about 30 minutes of work per exercise.
+The # of points you get for each self-evaluations are simply the score you've given yourself plus an additional point for providing an explanation of what you did wrong. The graders will simply review your self-evaluations.
 
 
 
@@ -61,8 +74,9 @@ You do not need to be an expert in any of these packages and I will provide you 
 <table>
 
   <tr>
-    <th>Week   </th>
+    <th>Week</th>
     <th>Topics</th>
+    <th>Reading</th>
     <th>Assignments</th>
   </tr>
 
@@ -82,8 +96,13 @@ You do not need to be an expert in any of these packages and I will provide you 
 
       <td VALIGN=TOP>
       <ul>
-      <li> <a href = ""> getting started with python </a> (not graded) </li>
-      <li> <a href = ""> Notebook 1 </a> </li>
+      <li> <a href = ""> Notes </a> </li>
+      </ul>
+      </td>
+
+      <td VALIGN=TOP>
+      <ul>
+      <li> <a href = "https://aaltoscicomp.github.io/python-for-scicomp/numpy/">  Python for Scientific Computing </a> (not graded) </li>
       </ul>
       </td>
   </tr>
@@ -100,7 +119,13 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-    <li> <a href = ""> Notebook 2 </a>  </li>
+    <li> <a href = ""> Notes </a>  </li>
+    </ul>
+    </td>
+
+    <td VALIGN=TOP>
+    <ul>
+    <li> Exercise Set 1</li>
     </ul>
     </td>
   </tr>
@@ -109,17 +134,26 @@ You do not need to be an expert in any of these packages and I will provide you 
 
  <tr>
       <td VALIGN=TOP>3</td>
+
       <td>
       <ul>
       <li> Introduction to Bayesian statistics</li>
       <li> Probabilistic computation in python with pymc3 </li>
       <li> Bayesian inference for some probability distributions </li>
       <li> Where do priors come from?</li>
-       </ul></td>
+       </ul>
+       </td>
 
        <td VALIGN=TOP>
        <ul>
-       <li> <a href = ""> Notebook 3 </a>  </li>
+       <li> <a href = ""> Notes </a>  </li>
+       </ul>
+       </td>
+
+       <td VALIGN=TOP>
+       <ul>
+       <li> Exercise Set 1 Self-evaluation</li>
+       <li> Exercise Set 2  </li>
        </ul>
        </td>
   </tr>
@@ -133,9 +167,17 @@ You do not need to be an expert in any of these packages and I will provide you 
     <li> Relationship between Bayesian linear regression and least squares </li>
     <li> p-values revisted </li></ul>
     </td>
+
     <td VALIGN=TOP>
     <ul>
-  <li> <a href = ""> Notebook 4 </a>  </li>
+  <li> <a href = ""> Notes </a>  </li>
+    </ul>
+    </td>
+
+    <td VALIGN=TOP>
+    <ul>
+    <li> Exercise Set 2 Self-evaluation</li>
+    <li> Exercise Set 3  </li>
     </ul>
     </td>
   </tr>
@@ -144,6 +186,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
   <tr>
     <td VALIGN=TOP>5</td>
+
     <td>
     <ul>
     <li> Regression with multiple predictors </li>
@@ -153,8 +196,16 @@ You do not need to be an expert in any of these packages and I will provide you 
      </ul>
     </td>
 
+
     <td VALIGN=TOP>
     <ul>
+  <li> <a href = ""> Notes </a>  </li>
+    </ul>
+    </td>
+
+    <td>
+    <ul>
+      <li>  Exercise Set 3 Self-evaluation </li>
       <li>  Project proposal due </li>
     </ul>
     </td>
@@ -171,11 +222,18 @@ You do not need to be an expert in any of these packages and I will provide you 
   </ul>
   </td>
 
+
   <td VALIGN=TOP>
   <ul>
-  <li> <a href = ""> Notebook 5 </a>  </li>
+<li> <a href = ""> Notes </a>  </li>
   </ul>
   </td>
+
+      <td VALIGN=TOP>
+      <ul>
+      <li> Exercise Set 4  </li>
+      </ul>
+      </td>
 </tr>
 
 <tr>
@@ -188,9 +246,17 @@ You do not need to be an expert in any of these packages and I will provide you 
   <li> Experimental design </li>
   </ul></td>
 
+
   <td VALIGN=TOP>
   <ul>
-  <li> <a href = ""> Notebook 6 </a>  </li>
+<li> <a href = ""> Notes </a>  </li>
+  </ul>
+  </td>
+
+  <td VALIGN=TOP>
+  <ul>
+  <li> Exercise Set 4 Self-evaluation  </li>
+  <li> Exercise Set 5  </li>
   </ul>
   </td>
 
@@ -207,11 +273,17 @@ You do not need to be an expert in any of these packages and I will provide you 
 
   <td VALIGN=TOP>
   <ul>
-  <li> <a href = ""> Notebook 7 </a>  </li>
-  <li> Final project report (due during finals week) </li>
+<li> <a href = ""> Notes </a>  </li>
   </ul>
   </td>
-</tr>
+
+  <td VALIGN=TOP>
+  <ul>
+  <li> Final project report (due during finals week) </li>
+    <li> Exercise Set 5 Self-evaluation </li>
+  </ul>
+  </td>
+  </tr>
 
 
 </table>
