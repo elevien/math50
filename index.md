@@ -10,8 +10,9 @@ logo: logo.svg
 
  **Instructor**: <a href = "https://elevien.github.io/"> Ethan Levien</a>.
 
-**Meeting time**: T/TH @ 10-12:
-**Office Hours**: T @ 1:
+**Meeting time**: T/TH @ 10-12
+
+**Office Hours**: T @ 1
 
  **Prerequisites**: Technically math 10; however, there are many other paths to prepare you for this course. The import thing is that you have some exposure to probability theory and are comfortable coding.
 
@@ -43,11 +44,10 @@ You will submit you solutions to gradescope (approximately) every week before I 
 <ul>
 <li> 0 - no work was done, or barely any effort was made. </li>
 <li> 1 - You put down partial work, but didn't put much effort in and didn't reach out if you needed help.   </li>
-<li> 2 - You put in effort, but didn't get the problem exactly correct. You reached out if you needed help, but didn't engage in discussions on slack or in class.      </li>
+<li> 2 - You put in effort, but didn't get the problem exactly correct. You reached out at least once if you needed help.      </li>
 <li> 3 - You got the problem correct, or made a very significant effort, including attending office hours and asking questions on slack if needed. </li>
 </ul>
 
-On average, I'll expect about 30 minutes of work per exercise.
 The # of points you get for each self-evaluations are simply the score you've given yourself plus an additional point for providing an explanation of what you did wrong. The graders will simply review your self-evaluations.
 
 
