@@ -120,7 +120,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-    <li> <a href = ""> Notes </a>  </li>
+    <li> <a href = "./notes/probability_models.pdf"> Important probability models </a> </li> 
     </ul>
     </td>
 
