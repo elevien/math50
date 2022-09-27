@@ -89,7 +89,6 @@ You do not need to be an expert in any of these packages and I will provide you 
       <ul>
       <li> Course policies </li>
       <li> Introduction python (during xhours)</li>
-      <li> Probability and random variables, CLT </li>
       <li> Using simulation to explore probability models </li>
       </ul>
       </td>
@@ -112,15 +111,14 @@ You do not need to be an expert in any of these packages and I will provide you 
     <td VALIGN=TOP>2</td>
     <td>
     <ul>
-    <li> Background on statistical modeling and inference</li>
-    <li> Hypothesis testing</li>
-    <li> Linear regression with a single predictor</li>
+    <li> Probability and random variables, CLT </li>
+    <li> Linear regression model with a single predictor</li>
      </ul>
     </td>
 
     <td VALIGN=TOP>
     <ul>
-    <li> <a href = "./notes/probability_models.pdf"> Basic statistical models </a> </li> 
+    <li> <a href = "./notes/probability_models.pdf"> Basic statistical models </a> </li>
     </ul>
     </td>
 
@@ -138,10 +136,8 @@ You do not need to be an expert in any of these packages and I will provide you 
 
       <td>
       <ul>
-      <li> Introduction to Bayesian statistics</li>
-      <li> Probabilistic computation in python with pymc3 </li>
-      <li> Bayesian inference for some probability distributions </li>
-      <li> Where do priors come from?</li>
+      <li> Background on statistical modeling and inference</li>
+      <li> Hypothesis testing</li>
        </ul>
        </td>
 
@@ -164,8 +160,8 @@ You do not need to be an expert in any of these packages and I will provide you 
     <td VALIGN=TOP>4</td>
     <td>
     <ul>
-    <li> Bayesian inference for regression models with a single predictor  </li>
-    <li> Relationship between Bayesian linear regression and least squares </li>
+    <li> Introduction to Bayesian statistics</li>
+    <li> Probabilistic computation in python with pymc3 </li>
     <li> p-values revisted </li></ul>
     </td>
 
