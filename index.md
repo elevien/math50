@@ -136,14 +136,14 @@ You do not need to be an expert in any of these packages and I will provide you 
 
       <td>
       <ul>
-      <li> Background on statistical modeling and inference</li>
-      <li> Hypothesis testing</li>
+      <li> Estimators, bias, consistancy</li>
+      <li> Statistical inference for regression modeling </li>
        </ul>
        </td>
 
        <td VALIGN=TOP>
        <ul>
-       <li> <a href = "./notes/statistical_inference.pdf"> Basic statistical models </a> </li>
+       <li> <a href = "./notes/statistical_inference.pdf"> Statistical inference </a> </li>
        </ul>
        </td>
 
@@ -160,14 +160,14 @@ You do not need to be an expert in any of these packages and I will provide you 
     <td VALIGN=TOP>4</td>
     <td>
     <ul>
-    <li> Introduction to Bayesian statistics</li>
-    <li> Probabilistic computation in python with pymc3 </li>
-    <li> p-values revisted </li></ul>
+    <li> Regression to the mean, AR processes</li>
+    <li> Evaluating regression output </li>
+    <li> p-values</li></ul>
     </td>
 
     <td VALIGN=TOP>
     <ul>
-  <li> <a href = ""> Notes </a>  </li>
+  <li> <a href =  "./notes/regression_single.pdf"> Working with regression models </a>  </li>
     </ul>
     </td>
 
@@ -213,9 +213,9 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>6</td>
 
   <td><ul>
-  <li> Deep dive into regression modeling assumptions  </li>
-  <li> What happens when regression modeling assumptions fail?   </li>
-  <li> Model diagnostics and model selection </li>
+  <li> Bayesian inference  </li>
+  <li> Markov Chain Monte Carlo   </li>
+  <li> Where do priors come from? </li>
   </ul>
   </td>
 
