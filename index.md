@@ -95,7 +95,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
       <td VALIGN=TOP>
       <ul>
-      <li> <a href = "./notes/probability_background.pdf"> Models and simulation </a> </li>
+      <li> <a href = "./notes/1_probability_background.pdf"> Models and simulation </a> </li>
       <li> <a href = "https://colab.research.google.com/drive/1Gs-gSsUP1hHVwhrbwvWzLVm1ulcLJKRI?usp=sharing"> Python Notebook </a> </li>
       </ul>
       </td>
@@ -118,7 +118,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-    <li> <a href = "./notes/probability_models.pdf"> Basic statistical models </a> </li>
+    <li> <a href = "./notes/1_probability_models.pdf"> Basic statistical models </a> </li>
     </ul>
     </td>
 
@@ -143,7 +143,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
        <td VALIGN=TOP>
        <ul>
-       <li> <a href = "./notes/statistical_inference.pdf"> Statistical inference </a> </li>
+       <li> <a href = "./notes/3_statistical_inference.pdf"> Statistical inference </a> </li>
        </ul>
        </td>
 
@@ -167,7 +167,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-  <li> <a href =  "./notes/regression_single.pdf"> Working with regression models </a>  </li>
+  <li> <a href =  "./notes/4_regression_single.pdf"> Working with regression models </a>  </li>
     </ul>
     </td>
 
@@ -196,7 +196,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-  <li> <a href = ""> Notes </a>  </li>
+    <li> <a href =  "./notes/5_multiple_predictors.pdf"> Multiple predictors </a>  </li>
     </ul>
     </td>
 
