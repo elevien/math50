@@ -118,7 +118,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
     <td VALIGN=TOP>
     <ul>
-    <li> <a href = "./notes/1_probability_models.pdf"> Basic statistical models </a> </li>
+    <li> <a href = "./notes/2_probability_models.pdf"> Basic statistical models </a> </li>
     </ul>
     </td>
 
