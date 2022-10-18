@@ -213,22 +213,23 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>6</td>
 
   <td><ul>
-  <li> Bayesian inference  </li>
-  <li> Markov Chain Monte Carlo   </li>
-  <li> Where do priors come from? </li>
+  <li> Performing regression on transformed variables </li>
+  <li> Model building strategies </li>
+  <li> Overfitting </li>
+  <li> Experimental design </li>
   </ul>
   </td>
 
 
   <td VALIGN=TOP>
   <ul>
-<li> <a href = ""> Notes </a>  </li>
+<li> <a href =  "./notes/6_model_eval.pdf"> Model evaluation </a>  </li>
   </ul>
   </td>
 
       <td VALIGN=TOP>
       <ul>
-      <li> Exercise Set 4  </li>
+      <li> None! Day of caring  </li>
       </ul>
       </td>
 </tr>
@@ -237,10 +238,9 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>7</td>
 
   <td><ul>
-  <li> Performing regression on transformed variables </li>
-  <li> Model building strategies </li>
-  <li> Overfitting </li>
-  <li> Experimental design </li>
+  <li> Bayesian inference  </li>
+  <li> Markov Chain Monte Carlo   </li>
+  <li> Where do priors come from? </li>
   </ul></td>
 
 
@@ -252,8 +252,8 @@ You do not need to be an expert in any of these packages and I will provide you 
 
   <td VALIGN=TOP>
   <ul>
-  <li> Exercise Set 4 Self-evaluation  </li>
-  <li> Exercise Set 5  </li>
+  <li> Exercise Set 4  </li>
+  <!-- <li> Exercise Set 5  </li> -->
   </ul>
   </td>
 
