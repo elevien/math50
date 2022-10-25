@@ -215,7 +215,6 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td><ul>
   <li> Performing regression on transformed variables </li>
   <li> Model building strategies </li>
-  <li> Overfitting </li>
   <li> Experimental design </li>
   </ul>
   </td>
@@ -223,7 +222,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
   <td VALIGN=TOP>
   <ul>
-<li> <a href =  "./notes/6_model_eval.pdf"> Model evaluation </a>  </li>
+<li> <a href =  "./notes/6_model_building1.pdf"> Model evaluation </a>  </li>
   </ul>
   </td>
 
@@ -238,15 +237,14 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>7</td>
 
   <td><ul>
-  <li> Bayesian inference  </li>
-  <li> Markov Chain Monte Carlo   </li>
-  <li> Where do priors come from? </li>
+  <li> Adding features to a model </li>
+  <li> Overfitting </li>
   </ul></td>
 
 
   <td VALIGN=TOP>
   <ul>
-<li> <a href = ""> Notes </a>  </li>
+<li> <a href =  "./notes/7_model_building2.pdf"> Model evaluation </a>  </li>
   </ul>
   </td>
 
@@ -263,6 +261,9 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>8</td>
 
   <td><ul>
+  <li> Bayesian inference  </li>
+  <li> Markov Chain Monte Carlo   </li>
+  <li> Where do priors come from? </li>
   <li> Logistic regression </li>
   <li> Causal inference  </li>
   <li> </li>
