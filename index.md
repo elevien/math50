@@ -271,7 +271,7 @@ You do not need to be an expert in any of these packages and I will provide you 
 
   <td VALIGN=TOP>
   <ul>
-<li> <a href = ""> Notes </a>  </li>
+<li> <a href =  "./notes/8_glm.pdf"> Model evaluation </a>  </li>
   </ul>
   </td>
 
