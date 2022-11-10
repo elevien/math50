@@ -1,0 +1,199 @@
+\chapter{Working with regression models}
+
+
+
+
+\section{Regression to the mean}
+
+Learning a little bit about the origin of the term regression can help us better understand regression models. Consider the regression model of daughter height ($Y$) conditioned on mother height ($X$): 
+\begin{equation}
+Y \sim aX + b + \epsilon,\quad \epsilon \sim {\rm Normal}(0,\sigma_{\epsilon}). 
+\end{equation}
+Over only one or two generations, we really don't expect the distribution of heights to change very much. Mathematically, this means $Y$ and $X$ should really have the same distribution. We call this the {\dfn steady-state} assumptions, because it amounts to the assumption that the distribution of heights is in a steady-state (which is a good approximation). Naively, we night expect that if the distribution of $X$ and $Y$ are the same, $a=1$. This is because the steady-state assumption seems to suggest that the regression line should preserve the distribution, and therefore the average value $Y|X$ should be the same as the average of $X$. \href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=qlEMNiOlRDcW&line=1&uniqifier=1}{\bf This turns out to be false!}
+
+
+To make sense of the fact that $a<1$, let's do some math. We will suppose
+\begin{equation}
+X \sim {\rm Normal}(\mu,\sigma)
+\end{equation}
+The steady-state assumptions tells us:
+\begin{equation}
+Y \sim {\rm Normal}(\mu,\sigma).
+\end{equation}
+On the other hand, we have a formula for the standard deviation of $Y$ (see week 2 notes):
+\begin{equation}
+Y \sim {\rm Normal}(a \mu + b,\sqrt{|a|^2\sigma^2 + \sigma_{\epsilon}^2}).
+\end{equation}
+The assumption that both distributions are equal implies 
+\begin{align}
+a \mu + b &= \mu\\
+|a|^2\sigma^2 + \sigma_{\epsilon}^2 &= \sigma^2
+\end{align}
+Solving these equations, we find that 
+\begin{equation}
+b = \mu (1-a)
+\end{equation}
+\begin{equation}
+\sigma = \frac{\sigma_{\epsilon}}{\sqrt{1-a^2}}. 
+\end{equation}
+For this equation to make sense, $|a|<1$, otherwise the standard deviation of the steady-state distribution explodes! The only exception is if $\sigma_{\epsilon}=0$, since then $y$ is a deterministic function of $x$.
+
+What is the intuition behind all this? Let's imagine $a=1$. Then abnormally tall mothers would birth to daughters that were on average just as tall (and the reverse for short mothers). This means that among all daughters, the spread of heights will be larger!  The same thing will happen to the granddaughters and over time the standard deviation of the distribution of heights will continue to grow. We need $|a|<1$ to balance out the effects of $\epsilon$, which tends to spread things out. As a result, the average height conditioned on mother height is a combination of the mother's height and mean height among all mothers, $\mu$: 
+\begin{equation}
+\E[Y|X=x] = ay + (1-a).
+\end{equation}
+
+\begin{example}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=XIUxH9Pyav2F&line=1&uniqifier=1}{Simulation of an autoregressive process}
+\end{example}
+
+An important lesson from the autoregressive example is that {\bf small differences is parameters can lead to HUGE differences in the results! It's crucial to understand what parameters}.
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=XIUxH9Pyav2F&line=1&uniqifier=1}{Working with autoregressive models}
+\end{exercise}
+
+
+\section{Some basic model evaluation}
+
+Often we are interested in fitting data (i.e. inferring the parameters) to a linear regression model because we want to make predictions. How do we access how accurately we can make predictions? In order to address this questions it is very important we recognize there are different types of predictions we might want to make. For example, in the context of predicting the outcome of an election, we not interested so much in the distribution of outcomes, rather (since there is only one election). If we are designing a drug, it doesn't matter if there is an effect on the average if there is a very wide distribution of outcomes. We refer to predictions of SPECIFIC $Y$ values as {\dfn point predictions}. 
+
+On the other hand, if we are interested in a scientific question, such as the heritability of human height, it is not so important whether we can predict individual heights, rather we are interested in understanding what the entire distributions of heights is. For example, we might want to know the chance that a person is greater than $6.5$ feet. We will refer to these types of predictions -- that is, predictions about the statistical behavior of a variable -- as {\dfn probabilistic predictions}. 
+
+\subsection{Coefficient of determination}
+Let's think about how we would evaluate our model's ability to make point predictions. Let's say we have fit a linear regression model and obtained $\hat{a}$, $\hat{b}$ and $\hat{\sigma}_{\epsilon}$. If we want to predict the value of $Y$ given $X=x$, our best guess is 
+\begin{equation}
+\hat{y} = \hat{a}x + \hat{b}
+\end{equation}
+It is important to recognize that $\hat{y}$ depends on the data, just like $\hat{a}$ and $\hat{b}$. If we know the actual value of $Y|(X=x) = y(x)$, then we could look at the difference between the prediction and the actual value:
+\begin{equation}
+r = \hat{y}-y.
+\end{equation}
+If course, we don't have $y$ for every $x$ only for the points in our data. Thus, a natural assessment of our models predictive power is to look at $r_i$ for each data point:
+\begin{equation}
+S_{r} =  \sum_{i=1}^n(\hat{y}_i-y_i)^2.
+\end{equation}
+$S$ itself is not that useful though: it could be very large, and yet if it is much smaller than the overall variation in $Y$, we can still make accurate predictions. 
+\begin{equation}
+S_{y} =  \sum_{i=1}^n(y_i-\hat{\mu}_y)^2.
+\end{equation}
+We compare there two quantities we obtain the {\dfn coefficient of determination}. 
+\begin{equation}
+R^2 = 1- S_r/S_y. 
+\end{equation}
+This is what statsmodels returns. {\bf We can think of $R^2$ as a measure of how much variation in $Y$ is explained by $X$}. 
+
+The coefficient of determination is actually related to a familiar quantity, the covariance. To see why, notice that if $X$ follows a normal distribution, can rewrite it as
+\begin{align}
+R^2 &\approx 1 - \frac{\sigma_{\epsilon}^2}{\sigma_y^2}  = \frac{\sigma_y^2 - \sigma_{\epsilon}^2}{\sigma_y^2}\\
+&=  \frac{a^2\sigma_{x}^2 + \sigma_{\epsilon}^2 - \sigma_{\epsilon}^2}{\sigma_y^2}
+=  \frac{a^2\sigma_{x}^2}{\sigma_y^2} =\rho^2
+\end{align}
+Where $\rho   ={\rm cov}(X,Y)/(\sigma_x\sigma_y)$ is known as the {\dfn correlation coefficient}. 
+To understand why $\rho$ is meaningful, notice that if the spread of $X$ is very large relative to the spread in $Y$, a small value of $a$ corresponds to a larger association between $X$ and $Y$ if we measure things in standard deviations.
+
+
+
+\begin{example}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=XIUxH9Pyav2F&line=1&uniqifier=1}{Generating simulated data with different values of $R^2$}
+\end{example}
+
+We can better understand $\rho$ in terms of the standardized variables. Let's assume that the $X$ values in our regression model follow a Normal distribution and define the standardized variables 
+\begin{equation}
+Z_y = \frac{Y - \mu_y}{\sigma_y},\quad Z_x = \frac{X - \mu_x}{\sigma_x}
+\end{equation}
+Here $\mu$ and $\sigma$ are the marginal mean and standard deviation of the variable in the subscript. 
+As you will show in the exercise below, $\rho$ is the slope of the regression line of $Z_y$ vs. $Z_x$. This helps us understand the meaning of $\rho$: it is there regression line we get if we translate our data to the origin and then rescale the axis to, roughly speaking, contain the bulk of our point cloud. Notice that $|\rho|<1$ -- why? This is related to regression to the mean: Both $Z_x$ and $Z_y$ have the same standard deviation. 
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=EuQ-M6mawB2X&line=3&uniqifier=1}{Some calculations involving $\rho$}
+\end{exercise}
+
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=4MTDvF3Rs1oo&line=1&uniqifier=1}{Interpreting $R^2$ in the context of applications}
+\end{exercise}
+
+
+\section{Visualizing uncertainty in regression models}
+
+Just like any parameters, there is some uncertainty in our estimates of parameters in a regression model. It is useful to visualize this when we plot the regression line, as is shown \href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=HRMu1e1vY7ZC&line=1&uniqifier=1}{here}.
+
+
+\section{Making decision with regression models}
+In statistics, we might infer parameters not because we are interested in specific values, but rather because we would like to use them to make a decision. For example, whether a candidate drug is worth moving to the next step in clinical trials. This problem is often framed in terms of {\dfn hypothesis testing}, in which we assign a probability to a particular hypothesis or its converse. The basic procedure of hypothesis testing is as follows:
+\begin{enumerate}
+\item Compute something called a test statistic, $\hat{T}$, which like any estimator is simply some function of the data. 
+\item Ask: how likely would we be to obtain a value AT LEAST at large at $\hat{T}$ IF our hypothesis was false.  The result is the $p$-value. 
+\end{enumerate}
+
+
+%Imagine we conduct our trial and obtain an estimate of $\Delta \hat{\mu} = 0.1$, $\hat{\sigma} = 0.1$ from $N=1000$ samples. In this case, we want to decide whether it is worth continuing to the next phase of a clinical trial. One way to approach the problem is to look at the confidence interval. 
+
+
+Let's return the to the example of a clinical trial described in the previous weeks notes.  For simplicity we will assume that $1/2$ there are $N$ people in EACH group. Then 
+ \begin{align}
+ \hat{\mu}_C &\sim {\rm Normal}(\mu_C,\sigma/\sqrt{N})\\
+  \hat{\mu}_T &\sim {\rm Normal}(\mu_T,\sigma/\sqrt{N})
+ \end{align}
+ thus 
+\begin{equation}
+\Delta \hat{\mu} \sim {\rm Normal}(\Delta \mu,\sqrt{2}\sigma/N). 
+\end{equation}
+In this case, our null hypothesis will be that $\Delta \mu = 0$; that is, there is no effect of the drug. As our test statistic, we measure how far $\Delta \mu$ is from zero in standard deviations: 
+\begin{equation}
+\hat{T} = \frac{\Delta \hat{\mu}}{{\rm se}(\Delta \hat{\mu} )}
+\end{equation}
+%Statistical significance can be understood in the language of $p$-values and hypothesis testing. The idea is that instead of looking directly at the sample distribution, we ask: How likely is it that we obtain a result at least as large as what we obtained if the null hypothesis were false. To this end, we consider the sample distribution conditioned on the null hypothesis being false:
+Now, let $\Delta \mu_0$ be the random variable representing the effect under the null hypothesis. If we estimated $\Delta \mu$, we get the sample distribution 
+\begin{equation}
+\Delta \hat{\mu}_0 \sim {\rm Normal}(0,\sqrt{2}\sigma/N).
+\end{equation}
+%This is a slightly different use of condition, since we are conditioning on a hypothesis, not an event in our sample. Think of it this way: the null hypothesis can itself be treated as a random variable which we are modeling 
+At this point we can answer the question posed in step 2. That is, we can answer the question: If the null hypothesis was true, how likely would we be to observe a value of $\hat{T}$ larger than the one we did.  This defines the $p$-value:
+\begin{equation}
+p_v = P(\hat{T}_0>|\hat{T}||\hat{T})
+\end{equation}
+where $\hat{T}_0$ is the test statistic corresponding to $\Delta \hat{\mu}_0$. {\bf Note that the probability in the definition of $p_v$ is taken over the distribution of $\Delta \hat{\mu}_0$, not $\hat{T}$. In this way, $p_v$, like $\hat{T}$ can be thought of as a random variable that depends on the data.}
+%
+%This defined the $p$ value: 
+%\begin{equation}
+%p_v = P(\Delta \hat{\mu}/{\rm std}(\Delta \hat{\mu}) > \Delta \hat{\mu}|\mu_C = \mu_T)
+%\end{equation}
+
+
+If the $p$-value is very small, then it is highly unlikely we would have observed what we did when the null hypothesis was true. In this case, we can REJECT the null hypothesis as false. Usually some threshold is set for this, and if the $p_v$ is below that threshold we say our result in statistically significant. On the other hand, {\bf if $p_v$ is not small, it does not necessarily mean the null hypothesis is true.}
+
+\begin{example}
+\href{https://colab.research.google.com/drive/143hintE_kXYGkEIphvkUz5ngCdNu22F0#scrollTo=Txol_lYyxXY5}{$p$-values}
+\end{example} 
+
+A result is said to be statistically significant if $p_v<0.05$. Visually, we can see that $\Delta \mu$ is statistically significant exactly if $0$ is not contained in the confidence interval! 
+
+
+
+
+
+\subsection{Problems with $p$-values, hypothesis testing and statistical significance}
+Despite the widespread use of $p$-values, classical hypothesis testing and statistical significance, these concepts have some problems. This does not mean they are not useful, rather it is important to understand how they might be applied in appropriately in practice. 
+
+First, typically the null hypothesis is never true, that is it is never the case that two subpopulations are exactly equal -- that is, that there is no effect. If we have enough data, we can almost always rule out the null hypothesis.  
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=f3odqYsslqkj&line=3&uniqifier=1}{Behavior of $p$-values in $N$ and effect size.  }
+\end{exercise} 
+
+
+
+
+A major issue in who statistical significance is used in practice, is that is can create a selection bias in the published literature, where effects sizes are almost always over estimates. 
+\begin{exercise}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=f3odqYsslqkj&line=3&uniqifier=1}{Bias in the literature }
+\end{exercise} 
+
+Finally, a philosophical problem with statistical significance is that the difference between statistically significant. 
+\begin{exercise}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=f3odqYsslqkj&line=3&uniqifier=1}{Problems with statistical significance }
+\end{exercise} 
+
+\

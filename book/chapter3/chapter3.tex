@@ -1,0 +1,297 @@
+\chapter{Statistical inference}
+
+
+
+
+\section{Estimators}
+The basic question of statistical inference can be framed as follow: We have a statistical model for a variable $Y$, e.g. 
+\begin{equation}
+Y \sim {\rm Normal}(\mu,\sigma),
+\end{equation}
+but we don't know the parameters (in this case $\mu$ and $\sigma$). Why do care about the parameters? We need knowledge of these in order to make predictions.  
+
+Now imagine we have some samples of $Y$ (either from simulations or data), $Y_1,Y_2,\dots,Y_N$. {\bf What are our best estimates of these parameters, and  how accurate are they?} We've already tackled the first part of this problem for a number of distributions. The solution relies on two key observations: \begin{enumerate}
+\item Both $\mu$ and $\sigma$ can be represented as means over the distribution of $Y$. For example $\mu = \E[Y]$. 
+%\begin{equation}
+%\mu = \E[Y],\quad \sigma^2 = {\rm var}(Y) = \E\left[(Y-\E[Y])^2\right]
+%\end{equation}
+\item If we have enough samples the sample average should be close to the actual average.  That is, $1/N\sum_{i=1}^NY_i \approx \E[Y]$. The central limit theorem tells us how accurate this estimate is. 
+%\begin{equation}
+%\frac{1}{N}\sum_{i=1}^Nf(Y) \approx \E[f(Y)]. 
+%\end{equation} 
+\end{enumerate}
+
+
+To make this procedure more precise and generalizable, let's introduce some definition and notation. We will let $\hat{\theta}$ denote an {\dfn estimator} of a parameter $\theta$ from a sample if $\hat{\theta}$ is some function of our sample which is meant to approximate $\theta$. For example 
+\begin{equation}
+\hat{\mu} = \frac{1}{N}\sum_{i=1}^N Y_i
+\end{equation}
+is an estimator of $\mu$ in the Normal model. 
+{\bf Remember:} the estimator is a property of the data. That is, {\bf $\hat{\mu}$ depends on the specific data we collect} or simulation we run. However, in classical statistics, it is meant to approximate something, $\mu$ which is a property of our statistical model.  {\bf $\mu$ does not depend on the data}.
+
+Since $\hat{\mu}$ depends on the data, different replications of our sample will generate different values of $\hat{\mu}$. We can therefore think of $\hat{\mu}$ as a random variable. We call the distribution of $\hat{\mu}$ over many replications of our data the {\dfn sample distribution}. This is different than the distribution of $Y$, rather it is the distribution of $Y_1,Y_2,\dots,Y_N$.  For example, $Y$ follows the Normal distribution given above, the sample distribution of $\hat{\mu}$ is 
+\begin{equation}
+\hat{\mu} \sim {\rm Normal}(\mu,\sigma/\sqrt{N})
+\end{equation}
+
+
+
+
+\subsection{Standard errors}
+
+A natural way to quantify the uncertainty in our estimate is the standard deviation of the $\hat{\theta}$ under the sample distribution.  We call the resulting quantity the {\dfn standard error}, which is our {\bf estimate} of the standard deviation of the sample distribution 
+For the Normal model, 
+\begin{equation}
+{\rm se}(\hat{\mu}) =  \frac{\hat{\sigma}}{\sqrt{N}}. 
+\end{equation}
+This tells us how much our estimate will vary between different experiments (or surveys/simulations). The $95\%$ {\bf confidence interval}, or $95\%CI$ is the interval 
+\begin{equation}
+[\hat{\theta} - 1.96{\rm se}(\hat{\theta}), \hat{\theta} + 1.96{\rm se}(\hat{\theta})]
+\end{equation}
+In classical statistics, the interpretation of CI is subtle: it is not saying there is $95\%$ chance or parameter will be in this interval. To understand why, note that the parameter has a $95\%$ chance to be in the interval 
+\begin{equation}
+[\theta - 1.96{\rm std}(\theta),\theta + 1.96{\rm std}(\theta)]
+\end{equation}
+
+The standard errors and confidence intervals can help us decide how much data we need to collect. 
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=jmB0Mvksc6B_&line=1&uniqifier=1}{Using standard errors to design an experiment}
+\end{example}
+
+There is an alternative way to think about the CI: as a measure of our belief in the parameter value. This interpretation is more natural for me, and we will discuss how to formalize it in the context of Bayesian statistics. 
+
+
+
+
+% This should be $Y/N$, since for an individual response $x_i =0,1$, $\E[x_i] = q$ and 
+% \begin{equation}
+% \bar{x}_i = Y/N \approx \E[x_i] = q. 
+% \end{equation}
+% At the same time, we expect that for any particular sample of the population 
+%\begin{equation}
+%\frac{Y}{N} \ne q
+%\end{equation}
+%since there is always a chance that we happen to sample more or less people who answer YES.  In this case we call $Y/N$ an {\dfn estimator} of $q$, and write $\hat{q}(Y) = Y/N$. 
+
+
+
+
+
+%In classical statistics, we measure accuracy using the standard error, denoted ${\rm se}(\hat{q})$.  The standard error is the standard deviation of $\hat{q}(Y)$ taken over different samples of our data.  If we are, say, flipping a coin and tallying the result to obtain $Y$, it is clear what this means. If $Y$ is the vote share from a one-off election, then is becomes a bit puzzling to think about replicating the experiment. Fortunately, this is a philosophical problem, not a mathematical one. Mathematically, we can always define ${\rm se}(\hat{q})$ \emph{within the context of our model} as 
+%\begin{equation}
+%{\rm se}(\hat{\theta}) = \sqrt{{\rm var}(\hat{\theta}(Y))}
+%\end{equation}
+%where the variance is taken over the distribution of $Y$. That is, we use the probability distribution $P(Y)$ to compute this variance. 
+%Roughly speaking, if we performed many experiments and measured $\hat{q}$, the measurements will typically differ by ${\rm se}(\hat{q})$. It is helpful to visualize this. 
+
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=jmB0Mvksc6B_&line=1&uniqifier=1}{Standard errors for binomial model}
+\end{exercise} 
+
+
+
+
+%
+%For the binomial model, we can calculate ${\rm se}(\hat{q})$ using what we've already learned. 
+%Since $\hat{q} = M/N$ we calculate the variance, but we need to know that 
+%\begin{equation}
+%{\rm var}(aX) = a^2{\rm var}(X) \,\,\, \text{ or } \sqrt{{\rm var}(aX)} = a\sqrt{{\rm var}(X)}
+%\end{equation}
+%Then it follows that 
+%\begin{equation}
+%{\rm var}(\hat{q}) = {\rm var}\left(\frac{M}{N}\right)  = \frac{1}{N^2}\times Nq(1-q) = \frac{q(1-q)}{N}
+%\end{equation}
+%so ${\rm se}(\hat{q}) = \sqrt{q(1-q)/N}$. 
+%
+%Another way to arrive it this is through the central limit theorem: $\hat{q}$ is approximately Normal with mean $\E[Y_i]$ and standard deviation $\sqrt{q(1-q)/N}$. We can use the Normal approximation to determine how large $N$ should be when we design an experiment. 
+
+
+
+\subsection{Bias and consistency}
+
+
+There must be some properties we would like the estimator to have. At a minimum, it should be in some way informed by the data.  We express this with the assumptions that: The more data we have (e.g. the larger $N$) the closer we expect $\hat{\theta}$ to be to the true value. What do we mean by "closer" when we are talking about random things. This turns out to be technical, but for our purposes we will say $\hat{\theta}$ is {\dfn consistent} if 
+\begin{equation}
+\E[\hat{\mu}] \to \mu\,\,\text{ and } {\rm se}(\hat{\theta})  \to 0 \,\,\,\text{ as }\,\, N\to \infty. 
+\end{equation}
+
+
+To better understand the notation of consistence, let's consider two rather silly ways to estimate $q$ in a Bernoulli distribution. Let $\hat{q}_1$ and $\hat{q}_2$ be two other estimators of $q$ defined by 
+\begin{align}
+\hat{q}_{1} &= \frac{Y}{N} + \frac{1}{N}\\
+\hat{q}_{2} &= \frac{y_1 + y_2}{2}
+\end{align}
+
+\begin{example}
+ \href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=US27cD1JgXn_&line=3&uniqifier=1}{Understanding consistency}
+\end{example} 
+
+This example demonstrates that consistency is not the only property we look for in an estimator, since $\hat{q}_1$ seems inferior to $\hat{q} = Y/N$. To this end, we say that an estimator $\hat{\theta}$ is {\dfn unbiased} for some $N$ (not just very large $N$), the average over the sample distribution is equal to the actual value under the model distribution; that is, 
+\begin{equation}
+\E[\hat{\theta}] = \theta. 
+\end{equation}
+
+\begin{exercise}
+ \href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=US27cD1JgXn_&line=3&uniqifier=1}{Understanding bias}
+\end{exercise} 
+
+
+\section{Maximum Likelihood}
+
+Sometimes it is quite clear what the estimator for a parameter should be, for example, this is the case for $q$ in the Bernoulli distribution. However, we will find this is not always the case, so it is useful to have a {\bf more systematic way of finding estimators.} 
+
+Recall that the probability distribution for the binomial distribution is 
+\begin{equation}\label{eq:binomial-pdf}
+p(Y) = {n \choose Y}q^Y(1-q)^{n-Y}
+\end{equation}
+In statistics, we sometimes call this the {\dfn likelihood}. More generally, the likelihood is defined as the probability we say a data set as a function of the parameters. 
+
+Equation \eqref{eq:binomial-pdf} tells us how likely it is to observe $k$ YES among $n$ people surveyed. Then, it seems reasonable that this number should not be very small, since that would mean our survey results are an anomaly. More generally, the larger $\Prob(Y|q)$ is the more likelihood our results are. This suggests one a way to estimate determine $q$: We can take as our estimate $\hat{q}$ the value which makes $\Prob(Y|q)$ largest. In other words, we are finding the value of $q$ which makes the data the most likely, and we will call this the {\dfn  maximum likelihood estimate}.
+
+You can do this using calculus (if you know how, I suggest you give it a try) to determine that the value of $q$ which makes \eqref{eq:binomial-pdf} largest is \begin{equation}
+\hat{q}_{\rm MLE} = \frac{Y}{n}
+\end{equation}
+
+
+
+For a Normal distribution with mean and variance $\mu$ and $\sigma$, the MLE estimators are the usual sample mean and standard deviation which we have already been exposed to. 
+%\begin{equation}
+%\hat{\mu}_{\rm MLE} = \frac{1}{n}\sum y_i
+%\end{equation}
+%and 
+%\begin{equation}
+%\hat{\sigma}_{\rm MLE} = \sqrt{\frac{1}{n-1}\sum ( y_i - \hat{\mu})^2}
+%\end{equation}
+
+
+\section{Estimators for parameters in a regression model}
+
+Consider the example of a clinical trial conducted as follows. Suppose $N$ people participate in the trial, and are randomly assigned to the the control group (C) and treatment group (T) with probability $1/2$. People in T are given a drug whose effects is measure by a percent.  We can model the distribution of blood pressure before and after treatment as 
+\begin{equation}
+Y_C \sim {\rm Normal}(\mu_C,\sigma)
+\end{equation}
+and 
+\begin{equation}
+Y_T \sim {\rm Normal}(\mu_T,\sigma).
+\end{equation}
+
+Our model for an individuals response can be framed as a regression model 
+\begin{equation}\label{eq:clinical}
+Y  = (\mu_T-\mu_C)X + \mu_C + \epsilon
+\end{equation}
+where $X=1$ if someone is in the treatment group and 
+\begin{equation}
+\epsilon \sim {\rm Normal}(0,\sigma_{\epsilon}). 
+\end{equation}
+How would we estimate $\mu_T$, $\mu_C$ and $\sigma$ from a sample? Assuming we know the group each patient has been assigned to, we observe that 
+\begin{equation}
+\E[Y|X=1] = \mu_T,\quad  \sqrt{{\rm var}(Y|X=1)} = \sigma_{\epsilon}. 
+\end{equation}
+This means we can estimate these from sample averages of $Y$ and $X$ (and similar for $X=0$). You might be tempted to say that the variance of $Y$ is also $\sigma_{\epsilon}$ -- but this is false! Why? (think back to the previous note when we looked at the marginal distribution of $Y$)
+
+
+
+
+
+
+
+
+This means the sample distribution of the mean of the treatment group is
+\begin{equation}
+\hat{\mu}_T \sim {\rm Normal}(\mu_T,\sigma/\sqrt{N})
+\end{equation}
+If  $\Delta \mu = \mu_T-\mu_C$, then as estimator $\Delta \mu$ is 
+\begin{equation}
+\Delta \hat{\mu} =  \hat{\mu}_T-\hat{\mu}_C
+\end{equation}
+which is really the slope of the regression line. 
+The sample distribution of $\Delta \hat{\mu}$ is also Normal:
+\begin{equation}
+\Delta \hat{\mu} \sim {\rm Normal}(\Delta \mu, \sigma_{\epsilon}/\sqrt{N})
+\end{equation}
+% NOTE: Maybe move earlier problem about ballpark estimate in test score model here
+
+
+
+\subsection{Covariance and correlations coefficient}
+Now let's consider the general regression model
+\begin{equation}
+Y = aX + b + \epsilon 
+\end{equation}
+where $X$ may be a continuous variable. 
+{\bf How would we estimate $a$? }
+
+ To understand how this can be done, we start by defining the covariance: 
+\begin{equation}
+{\rm cov}(X,Y) = \E[XY]-\E[X]\E[Y]
+\end{equation}
+What is ${\rm cov}(X,X)$? 
+\begin{equation}
+{\rm cov}(X,X) = \E[XX]-\E[X]\E[X] = \E\left[X^2 - \E[X]^2 \right] = {\rm var}(X).
+\end{equation}
+If $X$ and $Y$ are independent, the covariance will be zero, it is possible for the covariance to be zero without the variables being independent. 
+
+Just like standard deviation and mean, estimates of covariance are obtained by replacing $\E$ with the sample average: That is, if we have samples $(x_1,y_1),(x_2,y_2),\dots$,
+\begin{equation}
+ \E[XY]  \approx \frac{1}{N}\sum_i x_iy_i
+\end{equation}
+In python, you can compute the covariance 
+\begin{Verbatim}
+np.cov(x,y)[0,1]
+\end{Verbatim}
+The reason for the $[0,1]$ is that the covariance function in numpy actually computes a 2D array (a Matrix), where the off diagonal entries are the covariance. 
+
+
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=uQHmnUY9Yrq-}{Covariance vs. independence}
+\end{example}
+
+\subsection{Linear regression and least squares}
+For the linear regression model, we can show that
+\begin{equation}\label{eq:cov_linear}
+{\rm cov}(X,Y) = a\sigma_x^2
+\end{equation}
+Since ${\rm cov}(X,Y)$ and $\sigma_x$ are both things that can be computed from a sample, this suggests an estimator for the slope variable 
+\begin{equation}
+\hat{a} = \frac{\frac{1}{N-2}\sum_i (y_i - \hat{\mu}_y)(x_i - \hat{\mu}_x)}{\hat{\sigma}_x^2}
+\end{equation}
+The $N-2$ comes from the fact that we need at least two points to fit our regression model.
+We can rewrite this as 
+\begin{equation}
+\hat{a} =  \frac{\sum_i (y_i - \hat{\mu}_y)(x_i - \hat{\mu}_x)}{\sum_i (x_i - \hat{\mu}_x)^2} = 
+  \sum_i\left[\frac{ (y_i - \hat{\mu}_y)}{ (x_i - \hat{\mu}_x)}\right]^2\frac{(x_i - \hat{\mu}_x)}{\sum_i(x_i - \hat{\mu}_x)^2}
+\end{equation}
+This is weighted average of the rise/run between different points and the mean. Notice that if there are only two values of $x$, it reduces to the formula in the previous section. 
+We can also show that
+\begin{equation}
+\hat{b} = \hat{\mu}_y - \hat{a}\hat{\mu}_x
+\end{equation} 
+$\hat{a}$ and $\hat{b}$ are also called the {\dfn least squares estimator}, because it happens to be the values of $a$ and $b$ which minimize the squared distance to the estimated regression line. 
+
+Since the samples are Normally distributed around the line with variance $\sigma$, we can estimate $\sigma$ as the sample variance of the difference between our data and the line $\hat{b} + x \hat{a}$. However, since we are replacing the actual values of $a$ and $b$ with the estimations, we need to account for this in our estimation of the uncertainty and divide by $N-2$ instead of $N$. 
+
+You never need to work with these formulas directly, as there is a Python package which does the computations for us. The code for fitting a linear regression model is 
+\begin{Verbatim}
+X = sm.add_constant(x)
+model = sm.OLS(y,X)
+results = model.fit()
+print(results.summary())
+\end{Verbatim}
+The following example illustrates the use of this
+
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=CruopEX0VYZe}{Working with stats models}
+\end{example}
+
+\begin{exercise}
+\href{https://colab.research.google.com/drive/1QarJhwPmSqCTQ-HwU_lXCUX6uvdhLdrM#scrollTo=WKJ4kyoIVvhd}{More working with stats models}
+\end{exercise}
+
+
+
+
+

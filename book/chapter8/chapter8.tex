@@ -1,0 +1,247 @@
+\chapter{Logistic regression}
+
+\section{Motivation}
+
+So far we have considered the linear model: 
+\begin{equation}
+Y = b + \sum a_i X_i + \epsilon
+\end{equation}
+where $\epsilon$ follows is mean zero Normal random variable. We understand that this can be formulated as the conditional distribution of $Y$ given $X$: 
+\begin{equation}
+Y|X \sim {\rm Normal}\left(b + \sum_i a_i ,\sigma_{\epsilon} \right)
+\end{equation}
+We know that we have some formulates for unbiased estimators of $b$, $a_i$ and $\sigma_{\epsilon}$ in terms of our data. Specifically, the formulas for the $a_i$ come from the covariances and variances of the predictors and response variables in complicated ways (but are straightforward to compute).  After recognizing that we can select both $Y$ and $X_i$ to be function of various variables in our data (by transformations and addition of features), this modeling framework gives the ability to expand our model indefinitely. The remaining limitation is that of the structure of the noise: Since the noise is Gaussian, we are limited to studying only certain times of randomness. 
+
+What if we want to predict a binary variable?  As an example, let's consider the problem of predicting whether someone supports same sex marriage based on some information about them, such as age and gender. As a ``warm up" to get us thinking about this problem, will start with the binary predictor sex (which is restricted to Male or Female is this dataset). Our response variable $Y$ is one if someone supports same sex marriage and zero otherwise. 
+Thus $Y$ is a Bernoulli random variable and thus does not follow a normal distribution regardless of which predictors we condition on. In this case, we can frame the problem of modeling the association between $X$ and $Y$ as two separate inferences of Bernoulli random variables: 
+\begin{align}
+Y|(X=0) &\sim {\rm Bernoulli}(q_0)\\
+Y|(X=1) &\sim {\rm Bernoulli}(q_1)
+\end{align}
+Hence, we can simply break the data up into two groups and estimate $q_0$ and $q_1$ as we've done before with Bernoulli random variables. 
+
+
+Alternatively, we can frame this as a regression problem
+\begin{equation}
+Y|X \sim {\rm Bernoulli}(q(X))
+\end{equation}
+where 
+\begin{equation}
+q(X) = q_0(1-X) + q_1X = X(q_1-q_0) + q_0
+\end{equation}
+Structurally, this is similar to the linear regression.  Our model for the response variable $Y$ conditioned on $X$ is a distribution in which the parameters depend linearly on $X$.  In the linear regression context, it is the mean of the Normal distribution that depends linearly on $X$ while here it is the chance for $Y=1$.  In fact, if in our data $k$ people support and $N-k$ do not, we compute $\tilde{Y} = k/N$. We could then have a linear regression model (with Normal noise) for $\tilde{Y}$ in terms of $X$. We will later see that there are some advantages to working directly with $Y$!
+
+
+
+
+More generally, in order to capture binary noise, we might start with the model
+\begin{equation}
+Y|X \sim {\rm Bernoulli}(q).
+\end{equation}
+Here, $q$ is the sole parameter and therefore in order for the distribution of $Y$ to depend on $X$, $q$ must depend on $X$. Naively, we might simply take $q(X)$ to be 
+\begin{equation}
+ \sum a_i X_i
+\end{equation}
+but this has a problem if $X$ are continuous predictors, since we must have $0<q<1$. In order to ensure this is the case, we set 
+\begin{equation}
+W = \sum_i a_i X_i
+\end{equation} 
+and set $q = h(W)$, but we want to select $h$ so that as $W \to \infty$, $q \to 1$, and as $W \to -\infty$, $q \to 0$. The next task is to see how this is done. 
+
+
+\section{Logistic model}
+
+\subsection{The logistic function}
+
+We would ideally like to come up with a function $h = h(w)$ that maps $w$ to $0$ and $1$. The standard choice is \begin{equation}
+q(w) = {\rm logit}^{-1}(w) = \frac{1}{1+e^{-w}}
+\end{equation}
+This is called the inverse logistic function between if we solve for $w$, we get the {\dfn logistic function}
+\begin{equation}
+w= \ln \left(\frac{q}{1-q} \right)
+\end{equation}
+
+
+
+
+
+To better understand how the slope and intercept $b$ and $a$ effect the plots, let's think about limiting cases. 
+But first, think about the functions $e^{-w}$ and ${\rm logit}^{-1}(w)$. 
+
+\begin{itemize}
+\item $e^{-w} = 1$ when $w=0$. Thus $
+{\rm logit}^{-1}(0) = \frac{1}{1 + 1} = \frac{1}{2}$.
+\item  If $w$ is a very large positive number, $e^{-w} \approx 0$, so 
+%\begin{equation}
+${\rm logit}^{-1}(w) \approx \frac{1}{1+0} = 1$.
+%\end{equation}
+\item  If $w$ is a very large negative number $e^{-w}$ is huge, so 
+%\begin{equation}
+${\rm logit}^{-1}(w) \approx \frac{1}{1+\infty} = 0$.
+%\end{equation}
+\end{itemize}
+
+
+
+
+
+Let's imagine $b=0$ (there is no intercept). 
+
+\begin{itemize}
+\item  If $a$ is very large relative to all values of $x$, then $w = ax$ will quickly become large for small $x$ and therefore $y$ will very likely be $1$ for positive $x$ (and very likely be zero for negative $x$)
+\item  If $a$ is small relative to all values of $x$, then $w =ax$ will not change much and the chance that $y=1$ will be around $1/2$ for most $x$.
+\end{itemize} 
+
+
+
+To summarize, our the logistic regression model is 
+\begin{equation}
+Y|X \sim {\rm Bernoulli}\left(\frac{1}{1+e^{-b- \sum_i a_i X_i}}\right)\\
+\end{equation}
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=YWs_K1GfF660}{Generating data from logistic regression model}
+\end{example}
+
+
+
+
+\subsection{Fitting logistic regression}
+
+We can fit this in statsmodels as shown by the following example, and much of what we've learned turns out to carry over. 
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=NvKur135DQbe&line=1&uniqifier=1}{Logistic regression in statsmodels}
+\end{example}
+
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=jWjC5045V42_}{Logistic regression with real data}
+\end{example}
+
+
+
+
+
+
+
+\section{Interpretation and visualization}
+
+\section{Interpreting coefficients}
+
+In a logistic regression the meaning of the coefficients is a bit tricky. {\bf This is because their "effect" depends on the value of the predictors.} Let's think about a model with multiple predictors.
+
+
+Let's think about the intercept first. When the predictor (or all predictors if there are multiple) is zero, 
+\begin{equation}
+P(Y=1|X=0) = \frac{1}{1 + e^{-b}}\implies b= - \ln\left(\frac{1}{q} -1 \right)
+\end{equation}
+We can rearrange terms to get
+\begin{equation}
+b = \ln \left(\frac{q}{1-q} \right) = \ln \frac{P(Y=1|X=0)}{P(Y=0|X=0)}
+\end{equation}
+the expression $(1-q)/q$ is called the odds ratio, so $b$ tells us the log odds ratio to get $y=1$ when all predictors are zero. 
+
+More generally, {\bf $a_i$ tells us how much the log odds ratio changes when we chance $X_i$ by $1$ with all other predictors fixed.} To see this, first note that if the odds are $q = 1/(1+e^{-w})$, the odds ratio is 
+\begin{equation}
+\ln \frac{1/(1+e^{-w})}{1-1/(1+e^{-w})} = \ln \frac{1+e^{-w}}{e^{-w}(1+e^{-w})}  = \ln e^w = w
+\end{equation}
+If we change $X_i$ by $1$, then $w$ changes by $a_i$. 
+
+
+I find this really hard to think about odds ratios.  Instead, I think it is easiest to interpret the coefficients when the logistic function is well approximated by a linear function.  This happens when 
+\begin{equation}
+w= b + \sum_i a_iX_i =0.
+\end{equation}
+ At $w=0$, ${\rm logit}^{-1}(0) =1/2$ and  close to $z=0$ (between $-1$ and $1$)
+\begin{equation}
+{\rm logit}^{-1}(w) = \frac{1}{1+e^{-w}} \approx \frac{1}{2} + \frac{w}{4}
+\end{equation}
+
+
+ This leads to the {\dfn divide by four rule}: When the sum of predictors time coefficients is close to $0$, $a_i/4$ represents the difference in the chance that $Y=1$ between data points for which $X_i$ differs by $1$, with all other predictors fixed.
+
+ The divide by four rule gives an {\bf upper bound} on how much changing $X_i$ changes the probability for $Y$ to be one. In other words, the actual difference is always less than this. 
+ 
+ 
+  
+ \begin{example}
+ \href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=j8moyIWyuVQZ&line=3&uniqifier=1}{Homocide victim data}
+ \end{example}
+ 
+ 
+ \begin{exercise}
+ \href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=j8moyIWyuVQZ&line=3&uniqifier=1}{Testing divide by four rule}
+ \end{exercise}
+ 
+
+
+\section{Model evaluation for logistic regression}
+
+It's always useful to have some metric for accessing how much of the variation in the data the model explains the data we used to fit it, even though we know this is not the full story. For linear regression we use $R^2$. For logistic regression we have something called Pseudo $R^2$. Like $R^2$, it tells us, roughly speaking, what fraction of the variation in $Y$ values is explained by the predictors, but in this case we don't have the usual notion of residuals. Instead, we compare how likely it is to see the particular sequence of $Y$ values under the model, vs. how likely it would be to see them if the chance to get $Y=1$ did not depend on $X$:
+\begin{equation}
+{\rm pseudo}\, R^2 = 1- \frac{\ln( \text{chance to see $Y_1,Y_2,\dots,Y_n$ given our model})}{\ln (\text{chance to see $Y_1,Y_2,\dots,Y_n$ given $x$ has no effect})}
+\end{equation}
+
+Why does this make sense? Observe the following facts:
+\begin{itemize}
+\item  The chance to see a given sequence of $y$ values of $y$ is between $0$ and $1$. 
+\item  The log of a value between $0$ and $1$ will be negative, and will be a larger negative number when the chance is smaller. 
+\end{itemize}
+Thus, if we are much more likely to see the data given our model, the denominator will be closer to $0$. If we are less likely to see our data, it will be a large negative number (but always smaller than the denominator). 
+
+{\bf It tells us how good our model is at predicting the $Y$ values}. Notice that if we do bin the data and perform a linear regression, the $R^2$ we get is generally MUCH larger than the Pseudo $R^2$. Think about why. 
+
+\begin{example}
+\href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=HEfVl_PA2OCE&line=1&uniqifier=1}{Understanding Pseudo $R^2$ with simulations}
+\end{example}
+
+
+%\subsection{When is logistic model insufficient?}
+%
+%A typical situation in which the logistic model is not sufficient arrises when the probability for $Y$ to be one or zero does not saturate (it doesn't converge to one or zero). For, example, 
+
+%\section{Logistic regression vs. binning}
+\section{Additional examples}
+\begin{example}
+\href{https://colab.research.google.com/drive/1_oMrxtIlJ-EdW1ozmlydx0A9qrA-sVKm#scrollTo=HEfVl_PA2OCE&line=1&uniqifier=1}{Predicting ground water contamination }
+\end{example}
+
+
+\section{More general classification problems}
+We'd now like to tackle the more general problem predicting a categorical variable. Let's say $Y$ can take on values $0$ through $K-1$. To generalize the logistic model, we'd like the probability distribution of $Y$ to have the form 
+\begin{equation}
+P(Y=y|X) = q_i(X).
+\end{equation}
+As usual for a categorical variable we only need to define $K-1$ probabilities, with the other being determined by the normalization 
+\begin{equation}
+\sum_{y=0}^{K-1} q_y(X) = 1.
+\end{equation}
+Logistic regression corresponds to the case where $K=2$. In that case, we saw from before that 
+\begin{equation}
+q_1(X) = \frac{1}{1+e^{-W}}
+\end{equation}
+and 
+\begin{equation}
+q_0(X) = 1-q_0(X) = 1-\frac{1}{1+e^{-W}}= \frac{e^{-W}}{1+e^{-W}} 
+\end{equation}
+We can equivalently write these as 
+\begin{equation}
+q_1(X) = \frac{1}{Z},\quad q_0(X) = \frac{e^{-W}}{Z}
+\end{equation}
+The values $1$ and $e^{-W}$ correspond to {\dfn statistical weights} -- they are not probabilities, but tell us the relative frequency of these events. $Z$ is a normalization which does not depend on the $y$ values. However, it does depend on $X$. For a more general regression on a categorical response variable, we will set $q_0 = 1/Z$ and  
+\begin{equation}
+P(Y=y|X) = \frac{e^{-W_y}}{Z},\quad y = 1,\dots,K-1.
+\end{equation}
+By analogy with logistic regression, we'll have
+\begin{equation}
+W_y = b_y + \sum_i a_{y,i}X_i.
+\end{equation}
+In total, if there are $M$ predictors we have $(M+1)(K-1)$ parameters. 
+
+It's important to understand that this so-called multinomial logistic regression model is NOT an intermediate between the logistic regression and the linear regression. If we have many categories that are ordered (say someone's response on a 1 to 10 scale on a survey), it might be better to do a linear regression (understanding that the normal distribution is not a perfect description of the noise). The multinomial logistic regression makes sense when we need to classify things that do not have an obvious ordering. 
+
+
+
+
+%Sometimes we know the values of $\alpha$ and $\beta$ before seeing any data, for example, the ideal gas law. In this case, there is no need to carry out statistical inference. In the previous section, we discussed how statistical inference of the parameters $\alpha$, $\beta$ and $\sigma$ works, assuming no knowledge of these parameters. These is an intermediate between these two regimes: We might have a rough idea of what the parameters are from physical considerations or previous experiments. In this case, it is appropriate to incorporate this knowledge into out statistical inference. This can be done via \emph{priors}. In order to understand priors, let's work with the following exampe.

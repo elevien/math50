@@ -1,0 +1,114 @@
+\documentclass[10pt]{amsbook}
+%\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[legalpaper, margin=1.in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+
+
+
+
+% fonts
+\input{ArtNouvc.fd}
+\newcommand*\initfamily{\usefont{U}{ArtNouvc}{xl}{n}}
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum} % change font
+
+
+% from https://www.pinterest.co.uk/pin/88664686405122253/
+\definecolor{C1}{RGB}{141, 125, 158} %purple
+\definecolor{C2}{RGB}{163,156,147} % yellow
+\definecolor{C3}{RGB}{99,151,153} % green
+\definecolor{C4}{RGB}{195,106,99} % red
+\definecolor{C5}{RGB}{124, 132, 128}
+\definecolor{C6}{RGB}{67, 69, 75}
+
+\hypersetup{
+    colorlinks=false,
+    linkcolor=C2,
+    filecolor=magenta,      
+    urlcolor=C3,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+    
+    
+\patchcmd{\section}{\normalfont}{\color{C5}}{}{}
+\patchcmd{\subsection}{\normalfont}{\color{C5}}{}{}
+
+
+\newcommand{\dfn}[1]{\bf  \color{C2}{#1}}
+
+
+\renewcommand{\FancyVerbFormatLine}[1]{\color{C3}{>\,\,#1}}
+    
+\newtheorem{thm}{Theorem}
+
+\newtheoremstyle{exercise}
+{}                % Space above
+{}                % Space below
+{\color{C4}\slshape}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{:}               % Punctuation after theorem head % default: no punctuation
+{ }               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{exercise}
+\newtheorem{exercise}{Exercise}
+
+
+\newtheoremstyle{example}
+{}                % Space above
+{}                % Space below
+{\color{C1}\slshape}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{ }               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{example}
+\newtheorem{example}{Example}
+
+\newtheoremstyle{solution}
+{}                % Space above
+{}                % Space below
+{\color{C5}}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries }       % Theorem head font % (default is \mdseries)
+{:}               % Punctuation after theorem head % default: no punctuation
+{\newline}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{solution}
+\newtheorem*{solution}{Solution}
+
+
+\newcommand{\mcS}{\mathcal S}
+\newcommand{\mcR}{\mathcal R}
+\newcommand{\mcC}{\mathcal C}
+\newcommand{\bS}{{\boldsymbol S}}
+\newcommand{\bR}{{\boldsymbol R}}
+\newcommand{\bC}{{\boldsymbol C}}
+\newcommand{\ba}{{\boldsymbol a}}
+\newcommand{\bb}{{\boldsymbol b}}
+\newcommand{\bs}{{\boldsymbol s}}
+\newcommand{\bff}{{\boldsymbol f}}
+\newcommand{\br}{{\boldsymbol r}}
+\newcommand{\bx}{{\boldsymbol x}}
+\newcommand{\bt}{{\boldsymbol t}}
+\newcommand{\bv}{{\boldsymbol v}}
+\newcommand{\bu}{{\boldsymbol u}}
+\newcommand{\bw}{{\boldsymbol w}}
+\newcommand{\bc}{{\boldsymbol c}}
+\newcommand{\be}{{\boldsymbol e}}
+\newcommand{\bq}{{\boldsymbol q}}
+\newcommand{\bphi}{{\boldsymbol \phi}}
+\newcommand{\brho}{{\boldsymbol \rho}}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\ints}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}

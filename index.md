@@ -261,11 +261,7 @@ You do not need to be an expert in any of these packages and I will provide you 
   <td VALIGN=TOP>8</td>
 
   <td><ul>
-  <li> Bayesian inference  </li>
-  <li> Markov Chain Monte Carlo   </li>
-  <li> Where do priors come from? </li>
   <li> Logistic regression </li>
-  <li> Causal inference  </li>
   <li> </li>
   </ul></td>
 
@@ -276,13 +272,30 @@ You do not need to be an expert in any of these packages and I will provide you 
   </td>
 
   <td VALIGN=TOP>
-  <ul>
-  <li> Final project report (due during finals week) </li>
-    <li> Exercise Set 5 Self-evaluation </li>
-  </ul>
   </td>
   </tr>
 
+
+  <tr>
+    <td VALIGN=TOP>9</td>
+
+    <td><ul>
+    <li> Logistic regression </li>
+    <li> </li>
+    </ul></td>
+
+    <td VALIGN=TOP>
+    <ul>
+  <li> <a href =  "./notes/9_bayesian.pdf"> Bayes and regularization </a>  </li>
+    </ul>
+    </td>
+
+    <td VALIGN=TOP>
+    <ul>
+    <li> Final project report (due during finals week) </li>
+    </ul>
+    </td>
+    </tr>
 
 </table>
 

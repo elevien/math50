@@ -1,0 +1,74 @@
+\contentsline {chapter}{\tocchapter {Chapter}{1}{Modeling and simulation}}{1}{chapter.1}%
+\contentsline {section}{\tocsection {}{1}{Statistical models}}{1}{section.1.1}%
+\contentsline {section}{\tocsection {}{2}{Random variables and distributions}}{1}{section.1.2}%
+\contentsline {section}{\tocsection {}{3}{Python as a tool for statistical modeling}}{2}{section.1.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Simulations}}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Visualization}}{3}{subsection.1.3.2}%
+\contentsline {subsection}{\tocsubsection {}{3.3}{Working with tabular data}}{3}{subsection.1.3.3}%
+\contentsline {subsection}{\tocsubsection {}{3.4}{Monte Carlo}}{3}{subsection.1.3.4}%
+\contentsline {subsection}{\tocsubsection {}{3.5}{Means, variances, etc.}}{3}{subsection.1.3.5}%
+\contentsline {section}{\tocsection {}{4}{Joint probabilities, Independence}}{4}{section.1.4}%
+\contentsline {section}{\tocsection {}{5}{Additional exercises}}{4}{section.1.5}%
+\contentsline {chapter}{\tocchapter {Chapter}{2}{Probability models}}{5}{chapter.2}%
+\contentsline {section}{\tocsection {}{1}{Binomial Distribution}}{5}{section.2.1}%
+\contentsline {section}{\tocsection {}{2}{Uniform distribution and probability density (optional)}}{6}{section.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Joint density and conditional density}}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Cumulative density function}}{6}{subsection.2.2.2}%
+\contentsline {section}{\tocsection {}{3}{Normal distribution and the central limit theorem}}{6}{section.2.3}%
+\contentsline {section}{\tocsection {}{4}{Transformations of random variables}}{7}{section.2.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{Standardizing}}{7}{subsection.2.4.1}%
+\contentsline {section}{\tocsection {}{5}{Linear regression model}}{7}{section.2.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Working with regression}}{8}{subsection.2.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Interpretation of regression parameters}}{8}{subsection.2.5.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{3}{Statistical inference}}{9}{chapter.3}%
+\contentsline {section}{\tocsection {}{1}{Estimators}}{9}{section.3.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Standard errors}}{9}{subsection.3.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Bias and consistency}}{10}{subsection.3.1.2}%
+\contentsline {section}{\tocsection {}{2}{Maximum Likelihood}}{10}{section.3.2}%
+\contentsline {section}{\tocsection {}{3}{Estimators for parameters in a regression model}}{10}{section.3.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Covariance and correlations coefficient}}{11}{subsection.3.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Linear regression and least squares}}{11}{subsection.3.3.2}%
+\contentsline {chapter}{\tocchapter {Chapter}{4}{Working with regression models}}{13}{chapter.4}%
+\contentsline {section}{\tocsection {}{1}{Regression to the mean}}{13}{section.4.1}%
+\contentsline {section}{\tocsection {}{2}{Some basic model evaluation}}{13}{section.4.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Coefficient of determination}}{14}{subsection.4.2.1}%
+\contentsline {section}{\tocsection {}{3}{Visualizing uncertainty in regression models}}{14}{section.4.3}%
+\contentsline {section}{\tocsection {}{4}{Making decision with regression models}}{14}{section.4.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{Problems with $p$-values, hypothesis testing and statistical significance}}{15}{subsection.4.4.1}%
+\contentsline {chapter}{\tocchapter {Chapter}{5}{Regression modeling with multiple predictors}}{17}{chapter.5}%
+\contentsline {section}{\tocsection {}{1}{Multiple predictor linear regression}}{17}{section.5.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{1.0.1}{Multiple predictors in python}}{17}{subsubsection.5.1.0.1}%
+\contentsline {section}{\tocsection {}{2}{Interpretation and estimation of the parameters }}{17}{section.5.2}%
+\contentsline {section}{\tocsection {}{3}{Collinearity and sloppy models}}{19}{section.5.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{The sample distribution of coefficients}}{19}{subsection.5.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Changing variables. }}{20}{subsection.5.3.2}%
+\contentsline {section}{\tocsection {}{4}{Dealing with categorical data}}{20}{section.5.4}%
+\contentsline {chapter}{\tocchapter {Chapter}{6}{Model assumptions}}{21}{chapter.6}%
+\contentsline {section}{\tocsection {}{1}{Model assumptions revisited}}{21}{section.6.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{General assumptions in statistical inference}}{21}{subsection.6.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Linear regression model assumptions}}{21}{subsection.6.1.2}%
+\contentsline {section}{\tocsection {}{2}{Normality of errors}}{21}{section.6.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Missing a binary predictor}}{21}{subsection.6.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Multiplicative randomness}}{22}{subsection.6.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Working on a log scale}}{22}{subsection.6.2.3}%
+\contentsline {section}{\tocsection {}{3}{Independence of errors}}{23}{section.6.3}%
+\contentsline {section}{\tocsection {}{4}{Residual plots}}{23}{section.6.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{Identifying interactions in residual plots}}{24}{subsection.6.4.1}%
+\contentsline {chapter}{\tocchapter {Chapter}{7}{Model building}}{25}{chapter.7}%
+\contentsline {section}{\tocsection {}{1}{Linear models with features}}{25}{section.7.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Orthogonality}}{25}{subsection.7.1.1}%
+\contentsline {section}{\tocsection {}{2}{Overfitting}}{26}{section.7.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Direct assessment of model predictions}}{26}{subsection.7.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Bais-variance tradeoff}}{26}{subsection.7.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Information criteria vs. cross validation}}{27}{subsection.7.2.3}%
+\contentsline {section}{\tocsection {}{3}{Additional examples}}{27}{section.7.3}%
+\contentsline {chapter}{\tocchapter {Chapter}{8}{Logistic regression}}{29}{chapter.8}%
+\contentsline {section}{\tocsection {}{1}{Motivation}}{29}{section.8.1}%
+\contentsline {section}{\tocsection {}{2}{Logistic model}}{29}{section.8.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{The logistic function}}{29}{subsection.8.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Fitting logistic regression}}{30}{subsection.8.2.2}%
+\contentsline {section}{\tocsection {}{3}{Interpretation and visualization}}{30}{section.8.3}%
+\contentsline {section}{\tocsection {}{4}{Interpreting coefficients}}{30}{section.8.4}%
+\contentsline {section}{\tocsection {}{5}{Model evaluation for logistic regression}}{31}{section.8.5}%
+\contentsline {section}{\tocsection {}{6}{Additional examples}}{31}{section.8.6}%
+\contentsline {section}{\tocsection {}{7}{More general classification problems}}{31}{section.8.7}%
